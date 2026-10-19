@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cs2BoosterWrapper\Cs2BoosterWrapper.csproj" />
+    <ProjectReference Include="Cs2BoosterWrapper\Cs2BoosterWrapper.csproj" />
   </ItemGroup>
 
 </Project>

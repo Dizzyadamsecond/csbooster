@@ -112,12 +112,12 @@ public sealed class NetworkAntennaTweak : DelegateTweak
         risk: TweakRisk.Safe,
         requiresReboot: false,
         isApplied: () => true, // Placeholder - check actual adapter status
-        apply: async =>
+        apply: async () =>
         {
             try
             {
                 // Apply netsh settings for network optimization
-                var (code, out) = Shell.Run("netsh", "interface tcp set global chimney=enabled");
+                var (code, outputStr) = Shell.Run("netsh", "interface tcp set global chimney=enabled");
                 var (code2, out2) = Shell.Run("netsh", "interface tcp set global rss=enabled");
                 return TweakResult.Ok("Otimizações de rede aplicadas");
             }
@@ -126,11 +126,11 @@ public sealed class NetworkAntennaTweak : DelegateTweak
                 return TweakResult.Fail(ex.Message);
             }
         },
-        revert: async =>
+        revert: async () =>
         {
             try
             {
-                var (code, out) = Shell.Run("netsh", "interface tcp set global chimney=disabled");
+                var (code, outputStr) = Shell.Run("netsh", "interface tcp set global chimney=disabled");
                 var (code2, out2) = Shell.Run("netsh", "interface tcp set global rss=disabled");
                 return TweakResult.Ok("Revertido");
             }

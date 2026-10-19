@@ -42,7 +42,7 @@ public interface ITweak
     void Refresh();
 }
 
-public sealed class DelegateTweak : ITweak, System.ComponentModel.INotifyPropertyChanged
+public class DelegateTweak : ITweak, System.ComponentModel.INotifyPropertyChanged
 {
     private readonly Func<bool> _isApplied;
     private readonly Func<TweakResult> _apply;

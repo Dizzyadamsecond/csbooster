@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Cs2Booster</AssemblyName>
+    <RootNamespace>Cs2Booster</RootNamespace>
+    <ApplicationManifest>..\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+</Project>
