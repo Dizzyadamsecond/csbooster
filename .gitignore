@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js build output
+.next/
+out/
+
+# Production build
+build/
+dist/
+bin/
+obj/
+*.user
+*.suo
+*.userosv
+*.sln.docstates
+
+# C++ / Visual Studio build output
+x64/
+x86/
+Debug/
+Release/
+*.VC.db
+*.opendb
+.vs/
+
+# Vercel
+.vercel/
+
+# Environment variables
+.env*.local
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # .NET WPF Application
+  cs2booster-api:
+    image: mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809
+    container_name: cs2booster-api
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - ./Cs2Booster:/app
+      - Cs2Booster/bin:/app/bin:ro
+    # Verifica se CS2 está rodando
+    healthcheck:
+      test: ["CMD", "powershell", "-Command", "Get-Process -Name cs2 | Out-Null; if ($LASTEXITCODE -eq 0) { exit 0 } else { exit 1 }"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    # Graceful shutdown
+    stop_signal: SIGTERM
+
+  # Next.js Web Frontend
+  cs2booster-web:
+    image: node:20-alpine
+    container_name: cs2booster-web
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - "3000:80"
+    command: >-
+      sh -c "
+      cd /app/packages/web &&
+      npm install --silent &&
+      npm run build --silent &&
+      npx serve -s out -l 80
+      "
+    volumes:
+      - ./packages/web:/app/packages/web:ro
+    environment:
+      - NODE_ENV=production
+
+  # Database/Storage (optional - for profiles)
+  postgres:
+    image: postgres:15-alpine
+    container_name: cs2booster-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: cs2booster
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -1,0 +1,21 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="16.0">
+  <ItemGroup>
+    <ClCompile Include="CppCliWrapper.cpp" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetType>Library</TargetType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    <OutDir>$(SolutionDir)\Cs2Booster\</OutDir>
+    <IntDir>$(ProjectDir)obj\</IntDir>
+    <OverwriteSource>true</OverwriteSource>
+    <LinkAdditionalDependencies>user32.lib;gdi32.lib;psapi.lib;shell32.lib;uuid.lib;ole32.lib;CppCore.lib</LinkAdditionalDependencies>
+    <AdditionalDependencies>Advapi32.lib;CppCore</AdditionalDependencies>
+    <CLRSupport>false</CLRSupport>
+    <NativeContinuationTokenSerialization>true</NativeContinuationTokenSerialization>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ToolVersion>v143</ToolVersion>
+    <PlatformToolKit>LLVM clang clang-cl</PlatformToolKit>
+  </PropertyGroup>
+</Project>
