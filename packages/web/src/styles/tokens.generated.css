@@ -155,8 +155,43 @@
   --layout-container-max: 1200px;
 }
 
+
+/* Legacy compatibility aliases (pre-MonoRed naming — safe to migrate away) */
+:root {
+  color-scheme: light;
+  --color-bg-app: var(--color-bg);
+  --color-surface-card: var(--color-surface);
+  --color-surface-elevated: var(--color-surface-2);
+  --color-line-card: var(--color-line);
+  --color-text-primary: var(--color-text);
+  --color-primary-50: var(--red-50);
+  --color-primary-100: var(--red-100);
+  --color-primary-200: var(--red-200);
+  --color-primary-300: var(--red-300);
+  --color-primary-400: var(--red-400);
+  --color-primary-500: var(--red-500);
+  --color-primary-600: var(--red-600);
+  --color-primary-700: var(--red-700);
+  --color-primary-800: var(--red-800);
+  --color-primary-900: var(--red-900);
+  --color-primary-950: var(--red-950);
+  --transition-fast: var(--duration-fast) var(--ease-standard);
+  --transition-normal: var(--duration-base) var(--ease-standard);
+  --transition-slow: var(--duration-slow) var(--ease-standard);
+  --transition-slower: var(--duration-slower) var(--ease-standard);
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal-backdrop: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+  --z-overlay: 700;
+}
+
 [data-theme="dark"] {
   /* Semantic (dark) */
+  color-scheme: dark;
   --color-bg: #160e0e;
   --color-bg-rgb: 22 14 14;
   --color-surface: #2b1b1b;

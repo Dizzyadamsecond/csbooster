@@ -22,7 +22,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
     const sizes = { sm: "h-8 px-3 text-xs rounded-sm", md: "h-10 px-4 text-sm rounded-md", lg: "h-12 px-6 text-base rounded-lg" };
     const classes = clsx(base, variants[variant], sizes[size], className);
-    let style = glow ? "box-shadow: var(--color-primary) 0 0 20px rgba(220,38,38,0.3);" : "";
+    const style = glow
+      ? { boxShadow: "0 0 20px rgba(var(--color-primary-rgb) / 0.35)" }
+      : undefined;
     return (
       <button ref={ref} className={classes} style={style} disabled={disabled} {...props}>
         {children}

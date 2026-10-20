@@ -19,7 +19,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     };
     const classes = clsx(base, variants[variant], glow && "glow-primary", hoverable && "hover:cursor-pointer hover:translate-y-1", className);
     return (
-      <div ref={ref} className={classes} style={glow && { boxShadow: "var(--color-primary) 0 0 20px rgba(220,38,38,0.3)" }} {...props}>
+      <div ref={ref} className={classes} style={glow ? { boxShadow: "0 0 20px rgba(var(--color-primary-rgb) / 0.35)" } : undefined} {...props}>
         {children}
       </div>
     );

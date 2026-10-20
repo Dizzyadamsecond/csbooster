@@ -22,14 +22,11 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   useEffect(() => {
     setMounted(true);
 
-    // Get current theme
+    // Get current theme (MonoRed default: light; system pref only on first visit if dark requested explicitly)
     const getCurrentTheme = () => {
       const saved = localStorage.getItem("theme");
       if (saved === "light" || saved === "dark") return saved;
-
-      // Check system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      return prefersDark ? "dark" : "light";
+      return "light";
     };
 
     const current = getCurrentTheme();
