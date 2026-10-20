@@ -1,20 +1,36 @@
 import "./globals.css";
-import type { ReactNode } from "react";
+import { ThemeToggle } from "@/components/base/theme-toggle";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Cs2Booster - CS2 Performance Optimizer",
-  description: "CS2 Performance Booster - Maximize your FPS with advanced Windows optimization",
+export const metadata: Metadata = {
+  title: "CS2 BOOTS // E-Sports Elo Boost & FPS Optimization",
+  description:
+    "Plataforma definitiva para CS2: boosting rankeado, coaching profissional e otimização de FPS com tweaks do sistema Windows.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen">
-        {children}
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="app min-h-screen">
+        <div className="tidal-grid">
+          <ThemeToggle />
+          {children}
+        </div>
       </body>
     </html>
   );

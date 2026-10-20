@@ -1,0 +1,2 @@
+# Ignore vercel deployment artifacts
+.vercel/

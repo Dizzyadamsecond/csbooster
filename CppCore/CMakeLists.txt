@@ -16,6 +16,9 @@ target_sources(cs2core PRIVATE
     src/network_tweaker.cpp
     src/gpu_optimizer.cpp
     src/utils.cpp
+    src/timer_resolution.cpp
+    src/process_manager.cpp
+    src/cpu_affinity.cpp
     
     # Advanced features
     src/advanced/profiler.cpp

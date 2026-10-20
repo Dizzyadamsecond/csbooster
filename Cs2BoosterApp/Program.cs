@@ -31,6 +31,27 @@ class Program
             Console.ResetColor();
         }
 
+        // Start background monitoring thread for CS2
+        var monitorThread = new Thread(() =>
+        {
+            while (true)
+            {
+                try
+                {
+                    MonitorCs2Background();
+                }
+                catch
+                {
+                    // Ignore monitoring errors
+                }
+                Thread.Sleep(5000);
+            }
+        })
+        {
+            IsBackground = true
+        };
+        monitorThread.Start();
+
         string cmd = args.Length > 0 ? args[0].ToLowerInvariant() : "menu";
 
         switch (cmd)
@@ -43,7 +64,10 @@ class Program
                 return RevertAllTweaks();
             case "--monitor":
             case "monitor":
-                return MonitorCs2();
+                // Monitor mode - app runs in background, press any key to exit
+                Console.WriteLine(">> Monitorando CS2 em segundo plano... (Pressione qualquer tecla para sair)");
+                Console.ReadKey();
+                return 0;
             case "--status":
             case "status":
                 ShowStatus();
@@ -177,6 +201,25 @@ class Program
         catch (Exception ex)
         {
             Console.WriteLine("[INFO] " + ex.Message);
+        }
+    }
+
+    static void MonitorCs2Background()
+    {
+        try
+        {
+            var list = Process.GetProcessesByName("cs2");
+            if (list.Length > 0)
+            {
+                foreach (var p in list)
+                {
+                    p.PriorityClass = ProcessPriorityClass.High;
+                }
+            }
+        }
+        catch
+        {
+            // Process might have exited
         }
     }
 

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Cs2BoosterCore</RootNamespace>
+    <AssemblyName>Cs2BoosterCore</AssemblyName>
+    <Version>2.0.0</Version>
+    <Description>Core optimization engine for CS2 Booster - Games, Audio, Backup, Temperature, Network, and more</Description>
+  </PropertyGroup>
+
+</Project>

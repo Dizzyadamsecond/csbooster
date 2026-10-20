@@ -1,0 +1,161 @@
+/* ============================
+   THEME SYSTEM - CSBooster Design System
+   Light/Dark mode with persistence
+   ============================ */
+
+/* Theme storage and initialization */
+:root {
+  /* Current theme */
+  --theme-current: "light";
+
+  /* Theme transition */
+  --theme-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                      color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                      border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                      box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Auto dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg-app: #0b0b0b;
+    --color-surface-card: #141414;
+    --color-surface-elevated: #1e1e1e;
+    --color-line-card: rgba(255, 255, 255, 0.08);
+    --color-text-primary: #fafafa;
+    --color-text-secondary: #a1a1a1;
+    --color-text-tertiary: #717171;
+    --color-muted: #a1a1a1;
+    --color-faint: #717171;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-line: rgba(255, 255, 255, 0.08);
+    --color-line-strong: rgba(255, 255, 255, 0.15);
+
+    --glass-bg: rgba(11, 11, 11, 0.7);
+    --glass-bg-backdrop: rgba(11, 11, 11, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-blur: 16px;
+
+    --neumorph-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    --neumorph-highlight: 0 2px 4px rgba(255, 255, 255, 0.08);
+    --neumorph-light: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================
+   THEME TOGGLE COMPONENT
+   ============================ */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line-strong);
+  background-color: var(--color-surface-elevated);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface-2);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.theme-toggle[aria-checked="true"] {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-500);
+}
+
+.theme-toggle[aria-checked="true"] svg {
+  color: var(--color-bg);
+}
+
+/* Sun icon */
+.theme-toggle .sun-icon {
+  display: none;
+}
+
+.theme-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+  display: none;
+}
+
+/* ============================
+   THEME PERSISTENCE
+   ============================ */
+.theme-persist {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Theme preference cookie - would be set via JS on first load */
+.theme-pref {
+  display: none;
+}
+
+/* ============================
+   DARK/LIGHT TRANSITION
+   ============================ */
+html {
+  transition: var(--theme-transition);
+}
+
+body {
+  transition: var(--theme-transition);
+}
+
+/* ============================
+   ACCESSIBILITY: HIGH CONTRAST
+   ============================ */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: #000000;
+    --color-text-secondary: #333333;
+    --color-text-tertiary: #666666;
+    --color-line: rgba(0, 0, 0, 0.3);
+    --color-line-strong: rgba(0, 0, 0, 0.5);
+    --glass-bg: rgba(0, 0, 0, 0.5);
+    --glass-bg-backdrop: rgba(0, 0, 0, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.4);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --glass-blur: 12px;
+  }
+
+  [data-theme="light"] {
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-text-tertiary: #999999;
+    --color-line: rgba(255, 255, 255, 0.3);
+    --color-line-strong: rgba(255, 255, 255, 0.5);
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-bg-backdrop: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.3);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --glass-blur: 12px;
+  }
+}

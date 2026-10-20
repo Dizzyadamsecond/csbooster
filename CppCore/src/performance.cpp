@@ -26,6 +26,12 @@ bool PerformanceManager::initialize() {
 bool PerformanceManager::applyAll() {
     state_ = PerformanceState::Optimizing;
     
+    // Try to find CS2 process with retry
+    if (!findAndWaitForCs2(30000)) {
+        state_ = PerformanceState::Error;
+        return false;  // CS2 not running after wait
+    }
+    
     // Apply all optimizations in parallel where possible
     TweakResult powerResult = applyPowerPlan();
     if (!powerResult.success) {
@@ -292,6 +298,20 @@ bool PerformanceManager::findCs2Process() {
     
     CloseHandle(hSnapshot);
     return found;
+}
+
+bool PerformanceManager::findAndWaitForCs2(DWORD maxWaitMs) {
+    DWORD startTime = GetTickCount();
+    
+    while (GetTickCount() - startTime < maxWaitMs) {
+        if (findCs2Process()) {
+            return true;  // CS2 found!
+        }
+        Sleep(1000);  // Wait 1 second before retry
+    }
+    
+    // Final attempt outside loop
+    return findCs2Process();
 }
 
 std::wstring PerformanceManager::getLastErrorMessage(DWORD errorCode) const {

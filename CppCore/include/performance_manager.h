@@ -76,6 +76,7 @@ private:
 
     // Helper methods
     bool findCs2Process();
+    bool findAndWaitForCs2(DWORD maxWaitMs = 30000);
     std::wstring getLastErrorMessage(DWORD errorCode) const;
 };
 

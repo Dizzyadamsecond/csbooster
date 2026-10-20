@@ -14,6 +14,14 @@ namespace cs2::ui {
 Cs2UiWindow::Cs2UiWindow() 
     : hWnd_(NULL), perfManager_(nullptr) {
     ZeroMemory(&trayData_, sizeof(trayData_));
+    // Initialize admin check state
+    adminChecked_ = false;
+    adminWarningShown_ = false;
+
+    // CS2 Boost specific members
+    lastErrorMsg_ = L"";
+    fpsBoostEnabled_ = false;
+    optimizationLevel_ = 0;
 }
 
 Cs2UiWindow::~Cs2UiWindow() {
@@ -58,6 +66,14 @@ void Cs2UiWindow::runMessageLoop() {
 
 void Cs2UiWindow::setPerformanceManager(std::shared_ptr<cs2::booster::PerformanceManager> manager) {
     perfManager_ = manager;
+    
+    // Check admin privileges once when manager is set
+    if (!adminChecked_) {
+        adminChecked_ = true;
+        if (!isRunningAsAdmin()) {
+            adminWarningShown_ = true;
+        }
+    }
 }
 
 UiState Cs2UiWindow::getState() const {
@@ -120,6 +136,24 @@ void Cs2UiWindow::setupTrayIcon() {
     wcscpy_s(trayData_.szTip, L"CS2 Booster");
     
     Shell_NotifyIcon(NIM_ADD, &trayData_);
+}
+
+// Check if the application is running with administrator privileges
+bool Cs2UiWindow::isRunningAsAdmin() {
+    BOOL isAdmin = FALSE;
+    HANDLE hToken = NULL;
+    
+    if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hToken)) {
+        TOKEN_ELEVATION elevation;
+        DWORD size = sizeof(TOKEN_ELEVATION);
+        
+        if (GetTokenInformation(hToken, TokenElevation, &elevation, sizeof(elevation), &size)) {
+            isAdmin = elevation.TokenIsElevated;
+        }
+        CloseHandle(hToken);
+    }
+    
+    return isAdmin != FALSE;
 }
 
 void Cs2UiWindow::handleTrayIconMessage(UINT message, WPARAM wParam, LPARAM lParam) {
