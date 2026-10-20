@@ -1,5 +1,4 @@
 import "./globals.css";
-import { ThemeToggle } from "@/components/ui";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,7 +27,6 @@ export default function RootLayout({
       </head>
       <body className="app min-h-screen">
         <div className="tidal-grid">
-          <ThemeToggle />
           {children}
         </div>
       </body>

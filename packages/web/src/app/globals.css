@@ -172,6 +172,13 @@
     background-color: var(--color-bg);
   }
 
+  .main {
+    width: 100%;
+    max-width: var(--layout-container-max);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6) var(--space-12);
+  }
+
   .tidal-grid {
     position: relative;
     background-image:

@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "check:mono": "node scripts/monored-sweep.mjs --check",
+    "smoke:tw": "node scripts/smoke-tailwind.mjs",
     "dev:vite": "vite dev",
     "build:vite": "vite build",
     "preview:vite": "vite preview"

@@ -49,11 +49,11 @@ export function BoostCalculator() {
 
   // Rating color helper
   const getRatingColor = (rating: number) => {
-    if (rating >= 25000) return "text-red-400 border-red-500/40 bg-red-500/10";
-    if (rating >= 20000) return "text-red-400 border-rose-400/40 bg-rose-400/10";
-    if (rating >= 15000) return "text-red-400 border-fuchsia-400/40 bg-fuchsia-400/10";
-    if (rating >= 10000) return "text-red-400 border-blue-400/40 bg-blue-400/10";
-    if (rating >= 5000) return "text-red-400 border-cyan-400/40 bg-cyan-400/10";
+    if (rating >= 25000) return "text-primary-text border-primary/40 bg-primary/10";
+    if (rating >= 20000) return "text-text border-primary/40 bg-primary/5";
+    if (rating >= 15000) return "text-text border-primary/30 bg-primary/5";
+    if (rating >= 10000) return "text-text border-line-strong bg-primary/5";
+    if (rating >= 5000) return "text-text border-line bg-surface-3";
     return "text-muted border-line bg-surface-2";
   };
 
@@ -110,7 +110,7 @@ export function BoostCalculator() {
           </div>
 
           {/* Mode Selector: Duo Boost vs Solo */}
-          <div className="surface line-strong p-6 rounded-2xl border border-line space-y-4">
+          <div className="bg-surface p-6 rounded-2xl border border-line space-y-4">
             <span className="text-xs font-mono text-muted uppercase tracking-wider font-semibold block">
               1. Selecione a Modalidade de Execução
             </span>
@@ -120,7 +120,7 @@ export function BoostCalculator() {
                 className={`p-4 rounded-xl border text-left transition-all relative overflow-hidden ${
                   boostMode === "duo"
                     ? "border-red-500/80 bg-red-500/[0.08] text-text"
-                    : "border-line bg-black/20 text-muted hover:border-line-strong"
+                    : "border-line bg-surface-2 text-muted hover:border-line-strong hover:bg-surface-3"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -142,7 +142,7 @@ export function BoostCalculator() {
                 className={`p-4 rounded-xl border text-left transition-all relative overflow-hidden ${
                   boostMode === "solo"
                     ? "border-red-500/80 bg-red-500/[0.08] text-text"
-                    : "border-line bg-black/20 text-muted hover:border-line-strong"
+                    : "border-line bg-surface-2 text-muted hover:border-line-strong hover:bg-surface-3"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -150,7 +150,7 @@ export function BoostCalculator() {
                     <UserCheck className="w-5 h-5 text-red-400" />
                     <span className="font-bold text-text text-base font-display">Solo Boost (Piloto)</span>
                   </div>
-                  <span className="text-[10px] font-mono uppercase bg-cyan-400/20 text-cyan-300 px-2 py-0.5 rounded font-bold">
+                  <span className="text-[10px] font-mono uppercase bg-primary/10 text-primary-text px-2 py-0.5 rounded font-bold">
                     Mais Rápido
                   </span>
                 </div>
@@ -162,7 +162,7 @@ export function BoostCalculator() {
           </div>
 
           {/* Rating Sliders (Premier) */}
-          <div className="surface line-strong p-6 rounded-2xl border border-line space-y-6">
+          <div className="bg-surface p-6 rounded-2xl border border-line space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-xs font-mono text-muted uppercase tracking-wider font-semibold">
                 2. Calibrador de CS Rating Premier
@@ -226,7 +226,7 @@ export function BoostCalculator() {
           </div>
 
           {/* Modular Tactical Add-ons */}
-          <div className="surface line-strong p-6 rounded-2xl border border-line space-y-4">
+          <div className="bg-surface p-6 rounded-2xl border border-line space-y-4">
             <span className="text-xs font-mono text-muted uppercase tracking-wider font-semibold block">
               3. Recursos Táticos & Proteções Opcionais
             </span>
@@ -277,10 +277,10 @@ export function BoostCalculator() {
                     className={`p-3.5 rounded-xl border text-left transition-all flex items-start gap-3 ${
                       addon.active
                         ? "border-red-500/60 bg-red-500/[0.06] text-text"
-                        : "border-line-soft bg-black/20 text-muted hover:border-line-strong"
+                        : "border-line bg-surface-2 text-muted hover:border-line-strong hover:bg-surface-3"
                     }`}
                   >
-                    <div className={`p-2 rounded-lg ${addon.active ? "bg-red-500 text-black" : "bg-surface-2 text-muted"}`}>
+                    <div className={`p-2 rounded-lg ${addon.active ? "bg-red-500 text-mono-950" : "bg-surface-2 text-muted"}`}>
                       <Icon className="w-4 h-4" />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -299,7 +299,7 @@ export function BoostCalculator() {
 
         {/* Right Column: Sticky Summary Card (5 cols) */}
         <div className="lg:col-span-5 sticky top-24">
-          <div className="surface line-strong p-6 sm:p-8 rounded-3xl border border-line-strong shadow-2xl relative overflow-hidden">
+          <div className="bg-surface p-6 sm:p-8 rounded-3xl border border-line-strong shadow-2xl relative overflow-hidden">
             {/* Ambient Lighting Overlay */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -308,7 +308,7 @@ export function BoostCalculator() {
                 <span className="text-xs font-mono text-muted uppercase tracking-widest block">RESUMO DO PEDIDO</span>
                 <h3 className="text-xl font-bold text-text font-display uppercase mt-0.5">CS2 Boots Protocol</h3>
               </div>
-              <span className="px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-500/30 text-red-400 text-xs font-mono font-bold">
+              <span className="px-2.5 py-1 rounded bg-primary-soft border border-primary/30 text-primary-soft-text text-xs font-mono font-bold">
                 100% GARANTIDO
               </span>
             </div>
@@ -348,7 +348,7 @@ export function BoostCalculator() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-mono text-red-400 bg-red-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold block mb-1">
+                  <span className="text-[10px] font-mono text-red-400 bg-red-500/10 px-2 py-0.5 rounded border border-primary/30 font-bold block mb-1">
                     PIX INSTANTÂNEO
                   </span>
                   <span className="text-[11px] font-mono text-faint">ou 3x sem juros</span>
@@ -359,7 +359,7 @@ export function BoostCalculator() {
             {/* Action Checkout Button */}
             <button
               onClick={() => alert(`Pedido CS2 Boots configurado para R$ ${totalPrice},00! Redirecionando para o gateway seguro...`)}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-red-500 to-red-600 hover:bg-red-400 hover:to-amber-400 text-black font-extrabold text-sm sm:text-base tracking-wide uppercase font-display flex items-center justify-center gap-2 shadow-xl shadow-red-600/10 transition-all transform hover:-translate-y-0.5 active:scale-98"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary-hover hover:from-primary-hover hover:to-primary-active text-primary-foreground font-extrabold text-sm sm:text-base tracking-wide uppercase font-display flex items-center justify-center gap-2 shadow-xl shadow-primary/20 transition-all transform hover:-translate-y-0.5 active:scale-95"
             >
               <span>Contratar Boost Imediato</span>
               <ArrowRight className="w-4 h-4" />
