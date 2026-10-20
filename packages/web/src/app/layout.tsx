@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ThemeToggle } from "@/components/base/theme-toggle";
+import { ThemeToggle } from "@/components/ui";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

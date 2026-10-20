@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { BoostCalculator } from "@/components/boost/BoostCalculator";
-import { Card, Button } from "@/components/base";
-import { ThemeToggle } from "@/components/base/theme-toggle";
+import { Card, Button, ThemeToggle } from "@/components/ui";
 import { Zap, Trophy, Star, Download, Terminal } from "lucide-react";
 import { motion } from "framer-motion";
 

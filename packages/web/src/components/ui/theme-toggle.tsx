@@ -1,15 +1,12 @@
 /**
- * Theme Toggle Component
- * - Switches between light/dark modes
- * - Persists preference in localStorage
- * - Respects system preference
+ * Theme Toggle Component — MonoRed
+ * - light is the default theme; preference persists in localStorage
  */
-
 "use client";
 
 import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
-import { clsx } from "clsx";
+import { cn } from "@/lib/cn";
 
 interface ThemeToggleProps {
   className?: string;
@@ -21,18 +18,9 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
 
   useEffect(() => {
     setMounted(true);
-
-    // Get current theme (MonoRed default: light; system pref only on first visit if dark requested explicitly)
-    const getCurrentTheme = () => {
-      const saved = localStorage.getItem("theme");
-      if (saved === "light" || saved === "dark") return saved;
-      return "light";
-    };
-
-    const current = getCurrentTheme();
+    const saved = localStorage.getItem("theme");
+    const current = saved === "dark" ? "dark" : "light";
     setTheme(current);
-
-    // Apply theme
     document.documentElement.setAttribute("data-theme", current);
   }, []);
 
@@ -44,16 +32,18 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   };
 
   if (!mounted) {
-    return (
-      <div className={clsx("w-10 h-10 rounded-lg", className)} />
-    );
+    return <div className={cn("w-9 h-9 rounded-md", className)} aria-hidden="true" />;
   }
 
   return (
     <button
-      className="theme-toggle flex items-center justify-center h-9 w-9 rounded-lg border border-line bg-surface-2 transition-all duration-200 hover:bg-surface-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      className={cn(
+        "theme-toggle inline-flex items-center justify-center h-9 w-9 rounded-md border border-line-strong bg-surface transition-all duration-200 hover:bg-surface-2 hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+        className
+      )}
       aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"}
       aria-checked={theme === "dark"}
+      role="switch"
       onClick={toggleTheme}
     >
       <Sun className="sun-icon w-4 h-4" />
