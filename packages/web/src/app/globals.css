@@ -1,11 +1,15 @@
 /**
- * CS2 BOOTS — MonoRed Design System (globals v3.0.0)
- * --------------------------------------------------
+ * CS2 BOOSTER — CS2 Booster Cobalt (White, Blue, Black) Design System (globals v3.2.0)
+ * -----------------------------------------------------------------------------------
  * - Tokens: generated from design/tokens.json (scripts/generate-tokens.mjs)
  * - Tailwind: real @tailwind pipeline (verified by scripts/smoke-tailwind.mjs)
- * - Palette: strictly monochromatic RED + WHITE (no other hues)
+ * - Palette: CS2 Booster Cobalt (White, Blue, Black) — Pure White, Cobalt Blue, Deep Black
+ * - Token-pure: every value below resolves to a generated CSS custom property.
+ *   No raw hex, no raw rgb() outside rgba(var(--token-rgb) / alpha).
  * - Motion ownership: CSS here only for loops/decor; React motion (state) and
  *   GSAP (timelines/scroll) own everything else (see docs/design/TOKENS.md)
+ * - This file owns the app shell only. Every other surface is composed with
+ *   Tailwind utilities so the token contract stays in one place.
  */
 
 @import "../styles/tokens.generated.css";
@@ -73,7 +77,7 @@
 
   /* Focus visible — WCAG 2.1 AA */
   :focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 2px solid var(--color-focus-ring);
     outline-offset: 2px;
   }
 
@@ -164,9 +168,8 @@
   100% { background-position: 200% 0; }
 }
 
-/* ========================= COMPONENTS ========================= */
+/* ========================= APP SHELL ========================= */
 @layer components {
-  /* ---------- App shell ---------- */
   .app {
     min-height: 100vh;
     background-color: var(--color-bg);
@@ -193,19 +196,6 @@
     border-bottom: 1px solid var(--color-line);
     background-color: var(--color-surface);
     overflow: hidden;
-  }
-
-  .ticker-inner {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: var(--space-2) var(--space-6);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-    font-size: var(--font-size-xs);
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
   }
 
   .ticker-dot {
@@ -279,7 +269,7 @@
     font-weight: var(--font-weight-medium);
     white-space: nowrap;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
   }
 
   .nav-link:hover {
@@ -292,167 +282,53 @@
     background-color: var(--color-primary-soft);
     font-weight: var(--font-weight-semibold);
   }
-
-  /* ---------- Page transition ---------- */
-  .page-transition {
-    animation: fadeInUp var(--duration-slow) var(--ease-entrance) both;
-  }
-
-  /* ---------- Theme toggle icon swap ---------- */
-  .theme-toggle .sun-icon { display: none; }
-  .theme-toggle .moon-icon { display: block; }
-  [data-theme="light"] .theme-toggle .sun-icon { display: block; }
-  [data-theme="light"] .theme-toggle .moon-icon { display: none; }
-
-  /* ---------- Buttons (legacy .btn* API) ---------- */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    font-family: var(--font-family-sans);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    line-height: 1;
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .btn:focus-visible {
-    outline: 2px solid var(--color-focus-ring);
-    outline-offset: 2px;
-  }
-
-  .btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-primary-foreground);
-  }
-
-  .btn-primary:hover:not(:disabled) {
-    background-color: var(--color-primary-hover);
-  }
-
-  .btn-primary:active:not(:disabled) {
-    background-color: var(--color-primary-active);
-  }
-
-  .btn-secondary {
-    background-color: var(--color-surface-2);
-    color: var(--color-text);
-    border-color: var(--color-line-strong);
-  }
-
-  .btn-secondary:hover:not(:disabled) {
-    background-color: var(--color-surface-3);
-  }
-
-  .btn-ghost {
-    background-color: transparent;
-    color: var(--color-text-secondary);
-  }
-
-  .btn-ghost:hover:not(:disabled) {
-    background-color: var(--color-surface-2);
-    color: var(--color-text);
-  }
-
-  .btn-glass {
-    background: rgba(var(--color-surface-rgb) / 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: var(--color-text);
-    border: 1px solid var(--color-line-strong);
-  }
-
-  .btn-glass:hover:not(:disabled) {
-    background: rgba(var(--color-surface-2-rgb) / 0.9);
-    border-color: var(--color-primary);
-  }
-
-  .btn-neumorph {
-    background-color: var(--color-surface-2);
-    color: var(--color-text);
-    border: 1px solid var(--color-line);
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-fast);
-  }
-
-  .btn-neumorph:hover:not(:disabled) {
-    background-color: var(--color-surface-3);
-    border-color: var(--color-line-strong);
-  }
-
-  /* ---------- Cards ---------- */
-  .card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-lg);
-    padding: var(--space-4);
-    transition: all var(--transition-normal);
-  }
-
-  .card:hover {
-    box-shadow: var(--shadow-md);
-  }
-
-  .card-glass {
-    background: rgba(var(--color-surface-rgb) / 0.85);
+  /* ---------- Esports Glassmorphism & Glow Systems ---------- */
+  .esports-card {
+    position: relative;
+    background: rgba(10, 14, 26, 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--color-line-strong);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    padding: var(--space-6);
-    transition: all var(--transition-normal);
+    border: 1px solid rgba(var(--color-primary-rgb) / 0.22);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
   }
 
-  .card-glass:hover {
-    border-color: rgba(var(--color-primary-rgb) / 0.4);
+  .esports-card:hover {
+    border-color: rgba(var(--color-primary-rgb) / 0.5);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), 0 0 20px 0 rgba(var(--color-primary-rgb) / 0.2);
   }
 
-  /* ---------- Forms ---------- */
-  .input,
-  .select {
-    width: 100%;
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--font-size-sm);
-    color: var(--color-text);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-line-strong);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+  .esports-glow-radial {
+    position: absolute;
+    border-radius: var(--radius-full);
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(var(--color-primary-rgb) / 0.22) 0%, rgba(var(--color-primary-rgb) / 0.05) 50%, transparent 70%);
   }
 
-  .input:focus,
-  .select:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(var(--color-focus-ring-rgb) / 0.25);
+  .esports-hud-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-family-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(var(--color-primary-rgb) / 0.3);
+    background: rgba(var(--color-primary-rgb) / 0.1);
+    color: var(--color-primary-text);
   }
 
-  .input::placeholder,
-  .select::placeholder {
-    color: var(--color-text-tertiary);
+  .esports-button-glow {
+    position: relative;
+    box-shadow: 0 0 15px rgba(var(--color-primary-rgb) / 0.35);
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
   }
 
-  .label {
-    display: block;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    color: var(--color-text);
-    margin-bottom: var(--space-1);
+  .esports-button-glow:hover {
+    box-shadow: 0 0 25px rgba(var(--color-primary-rgb) / 0.65);
   }
+
 }
-
-
-
