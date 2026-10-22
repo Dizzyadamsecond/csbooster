@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * MonoRed Styleguide — living catalog of the design system.
+ * Noir Pro Styleguide — living catalog of the monochromatic Black & White design system.
  * Route: /styleguide
  * Everything here reads from generated tokens (design/tokens.json).
  */
@@ -21,17 +21,19 @@ import {
   Badge,
 } from "@/components/ui";
 
-// Mirrors design/tokens.json (kept as literals so the catalog needs no JSON import)
-const RED_RAMP: [string, string][] = [
-  ["50", "#fef2f2"], ["100", "#fee2e2"], ["200", "#fecaca"], ["300", "#fca5a5"],
-  ["400", "#f87171"], ["500", "#ef4444"], ["600", "#dc2626"], ["700", "#b91c1c"],
-  ["800", "#991b1b"], ["900", "#7f1d1d"], ["950", "#450a0a"],
-];
-
 const MONO_RAMP: [string, string][] = [
-  ["0", "#ffffff"], ["50", "#fbf7f7"], ["100", "#f7efef"], ["200", "#f0e3e3"],
-  ["300", "#e4cece"], ["400", "#cfadad"], ["500", "#b08787"], ["600", "#8e6464"],
-  ["700", "#6b4747"], ["800", "#452c2c"], ["900", "#2b1b1b"], ["950", "#160e0e"],
+  ["0", "#ffffff"],
+  ["50", "#fafafa"],
+  ["100", "#f4f4f5"],
+  ["200", "#e4e4e7"],
+  ["300", "#d4d4d8"],
+  ["400", "#a1a1aa"],
+  ["500", "#71717a"],
+  ["600", "#52525b"],
+  ["700", "#3f3f46"],
+  ["800", "#27272a"],
+  ["900", "#141416"],
+  ["950", "#080808"],
 ];
 
 const SEMANTICS = [
@@ -63,7 +65,7 @@ function Swatch({ name, hex }: { name: string; hex?: string }) {
         style={{ backgroundColor: hex ?? `var(--color-${name})` }}
       />
       <span className="text-[10px] font-mono text-muted truncate">{name}</span>
-      {hex && <span className="text-[10px] font-mono text-faint truncate">{hex}</span>}
+      {hex && <span className="truncate text-[10px] font-mono text-muted">{hex}</span>}
     </div>
   );
 }
@@ -81,13 +83,13 @@ export default function StyleguidePage() {
       <header className="flex items-start justify-between gap-4">
         <div>
           <p className="text-primary-text text-xs font-mono font-bold uppercase tracking-widest mb-2">
-            Design System v1.0.0
+            Design System v3.0.0
           </p>
           <h1 className="text-4xl font-black text-text font-display tracking-tight uppercase">
-            MonoRed <span className="text-primary-text">Styleguide</span>
+            Noir Pro <span className="text-primary-text">Styleguide</span>
           </h1>
           <p className="text-muted text-sm mt-2 max-w-2xl">
-            Vermelho monocromático + branco. Fonte única: <code className="font-mono text-primary-text">design/tokens.json</code>{" "}
+            Monocromático de luxo: Preto profundo (Noir / Obsidian) alternando estritamente com Branco puro (Pure White). Fonte única: <code className="font-mono text-primary-text">design/tokens.json</code>{" "}
             → Tailwind (web) e XAML (WPF). Contraste validado em{" "}
             <code className="font-mono text-primary-text">docs/design/CONTRAST.md</code>.
           </p>
@@ -98,19 +100,11 @@ export default function StyleguidePage() {
       </header>
 
       <motion.section {...reveal}>
-        <Heading eyebrow="01 — Color">Rampas primitivas</Heading>
+        <Heading eyebrow="01 — Color">Rampa Monocromática (Obsidian Noir ao Branco Puro)</Heading>
         <div className="space-y-6">
           <div>
-            <p className="text-xs font-mono text-muted mb-2">red (brand)</p>
-            <div className="grid grid-cols-11 gap-2">
-              {RED_RAMP.map(([step, hex]) => (
-                <Swatch key={step} name={`red-${step}`} hex={hex} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <p className="text-xs font-mono text-muted mb-2">mono (neutros com subtono vermelho)</p>
-            <div className="grid grid-cols-12 gap-2">
+            <p className="text-xs font-mono text-muted mb-2">mono (escala de luminosidade neutra / alto contraste)</p>
+            <div className="grid grid-cols-6 sm:grid-cols-12 gap-2">
               {MONO_RAMP.map(([step, hex]) => (
                 <Swatch key={step} name={`mono-${step}`} hex={hex} />
               ))}
@@ -169,11 +163,15 @@ export default function StyleguidePage() {
         <Heading eyebrow="06 — Components">Forms</Heading>
         <div className="grid sm:grid-cols-2 gap-4 max-w-2xl">
           <label className="block">
-            <span className="label">Nickname</span>
+            <span className="mb-1.5 block font-mono text-xs font-bold uppercase tracking-wider text-muted">
+              Nickname
+            </span>
             <Input placeholder="ex.: s1mple" />
           </label>
           <label className="block">
-            <span className="label">Modalidade</span>
+            <span className="mb-1.5 block font-mono text-xs font-bold uppercase tracking-wider text-muted">
+              Modalidade
+            </span>
             <Select defaultValue="premier">
               <option value="premier">Premier</option>
               <option value="competitive">Competitive</option>
@@ -197,7 +195,7 @@ export default function StyleguidePage() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Badge tone="neutral">v1.0.0</Badge>
+                <Badge tone="neutral">v3.0.0</Badge>
               </CardFooter>
             </Card>
           ))}

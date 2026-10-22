@@ -1,5 +1,5 @@
 /**
- * MonoRed motion presets — shared Framer Motion variants & easings.
+ * CS2 Booster Noir Pro motion presets — shared Framer Motion variants & easings.
  * Ownership rule: framer-motion owns state-driven React animation
  * (entrances, exits, tabs, layout). GSAP owns timelines/scroll (see lib/gsap.ts).
  * Values mirror design/tokens.json motion tokens.
@@ -8,13 +8,21 @@ import type { Variants } from "framer-motion";
 
 export type Bezier = [number, number, number, number];
 
-export const EASE: Record<"standard" | "entrance" | "exit", Bezier> = {
+export const EASE: Record<"standard" | "emphasized" | "entrance" | "exit", Bezier> = {
   standard: [0.4, 0, 0.2, 1],
+  emphasized: [0.2, 0, 0, 1],
   entrance: [0, 0, 0.2, 1],
   exit: [0.4, 0, 1, 1],
 };
 
 export const DURATION = { fast: 0.15, base: 0.2, slow: 0.3, slower: 0.5 } as const;
+
+/** Tactile spring presets for physics-based micro-interactions (critically damped, bounce: 0) */
+export const SPRING = {
+  tactile: { type: "spring", stiffness: 400, damping: 40, mass: 1, bounce: 0 },
+  tooltip: { type: "spring", stiffness: 450, damping: 42, mass: 1, bounce: 0 },
+  snappy: { type: "spring", stiffness: 500, damping: 45, mass: 1, bounce: 0 },
+} as const;
 
 /** Standard scroll/in-view reveal */
 export const fadeUp: Variants = {
@@ -54,5 +62,39 @@ export const heroTitle: Variants = {
     opacity: 1,
     y: 0,
     transition: { duration: 0.6, ease: EASE.standard },
+  },
+};
+
+/** Accordion collapse / expand transition with zero layout jumps (CLS = 0) */
+export const accordionContent: Variants = {
+  collapsed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      height: { duration: DURATION.base, ease: EASE.exit },
+      opacity: { duration: DURATION.fast, ease: EASE.exit },
+    },
+  },
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: {
+      height: { duration: DURATION.base, ease: EASE.entrance },
+      opacity: { duration: DURATION.base, ease: EASE.entrance, delay: 0.05 },
+    },
+  },
+};
+
+/** Reduced motion variant for accordion (instantaneous switch, duration 0) */
+export const accordionContentReduced: Variants = {
+  collapsed: {
+    height: 0,
+    opacity: 0,
+    transition: { duration: 0 },
+  },
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: { duration: 0 },
   },
 };

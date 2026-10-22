@@ -1,22 +1,38 @@
-import React from "react";
+import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/cn";
 
-interface FeatureCardProps {
+export interface FeatureCardProps {
   feature: {
     id: number;
     title: string;
     description: string;
-    icon: string;
+    icon: LucideIcon;
   };
+  className?: string;
 }
 
-export default function FeatureCard({feature}: FeatureCardProps) {
+export default function FeatureCard({ feature, className }: FeatureCardProps) {
+  const Icon = feature.icon;
+
   return (
-    <div className="group border border-line rounded-xl p-6 md:p-8 bg-surface hover:bg-surface/90 transition-colors duration-200 shadow-sm hover:shadow-md group-hover:shadow-lg">
-      <div className="flex items-start gap-3">
-        <span className="text-3xl flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">{feature.icon}</span>
-        <div className="flex-1 min-w-0">
-          <h3 className="text-text font-semibold mb-1 transition-all group-hover:text-red-600 duration-200">{feature.title}</h3>
-          <p className="text-muted text-sm leading-relaxed">{feature.description}</p>
+    <div
+      className={cn(
+        "group rounded-xl border border-line bg-surface p-6 shadow-sm transition-colors duration-200 hover:border-line-strong hover:bg-surface-2 md:p-8",
+        className
+      )}
+    >
+      <div className="flex items-start gap-4">
+        <span
+          aria-hidden="true"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-primary-soft text-primary-soft-text transition-colors duration-200 group-hover:border-primary/45 group-hover:bg-primary/15"
+        >
+          <Icon className="h-5 w-5" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <h3 className="mb-1.5 font-display text-base font-bold tracking-tight text-text transition-colors duration-200 group-hover:text-primary-text">
+            {feature.title}
+          </h3>
+          <p className="text-sm leading-relaxed text-muted">{feature.description}</p>
         </div>
       </div>
     </div>

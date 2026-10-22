@@ -34,7 +34,7 @@ export function Ticker() {
   );
 
   const row = (
-    <div className="flex shrink-0 items-center gap-8 pr-8">
+    <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden="true">
       {ORDERS.map((order) => (
         <span
           key={order}
@@ -58,14 +58,21 @@ export function Ticker() {
         <div className="relative min-w-0 flex-1 overflow-hidden">
           <div ref={trackRef} className="flex w-max">
             {row}
-            {row}
+            <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden="true">
+              {ORDERS.map((order) => (
+                <span key={order} className="flex items-center gap-2 whitespace-nowrap text-muted">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {order}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="hidden items-center gap-4 text-xs uppercase md:flex">
-          <span className="flex items-center gap-1 text-primary">
+          <span className="flex items-center gap-1 text-primary-text">
             {[1, 2, 3, 4, 5].map((i) => (
-              <Star key={i} className="h-3.5 w-3.5 fill-primary" />
+              <Star key={i} className="h-3.5 w-3.5 fill-primary-text" />
             ))}
             <span className="font-bold text-text">4.9/5</span>
           </span>

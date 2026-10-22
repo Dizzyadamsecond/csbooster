@@ -1,7 +1,3 @@
-/**
- * Theme Toggle Component — MonoRed
- * - light is the default theme; preference persists in localStorage
- */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -13,32 +9,32 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("theme");
-    const current = saved === "dark" ? "dark" : "light";
-    setTheme(current);
-    document.documentElement.setAttribute("data-theme", current);
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.classList.add("dark");
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    // Monochromatic Noir Arena is strictly dark
+    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.classList.add("dark");
   };
 
   if (!mounted) {
-    return <div className={cn("w-9 h-9 rounded-md", className)} aria-hidden="true" />;
+    return <div className={cn("h-9 w-9 rounded-md", className)} aria-hidden="true" />;
   }
 
   return (
     <button
+      type="button"
       className={cn(
-        "theme-toggle inline-flex items-center justify-center h-9 w-9 rounded-md border border-line-strong bg-surface transition-all duration-200 hover:bg-surface-2 hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
+        "inline-flex h-9 w-9 items-center justify-center rounded-md border border-line-strong bg-surface text-text transition-all duration-200 hover:border-primary/60 hover:bg-surface-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
         className
       )}
       aria-label={theme === "light" ? "Ativar modo escuro" : "Ativar modo claro"}
@@ -46,8 +42,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       role="switch"
       onClick={toggleTheme}
     >
-      <Sun className="sun-icon w-4 h-4" />
-      <Moon className="moon-icon w-4 h-4" />
+      <Sun aria-hidden="true" className="h-4 w-4 dark:hidden" />
+      <Moon aria-hidden="true" className="hidden h-4 w-4 dark:block" />
     </button>
   );
 }

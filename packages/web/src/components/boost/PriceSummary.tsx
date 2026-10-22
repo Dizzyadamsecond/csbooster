@@ -28,89 +28,104 @@ export function PriceSummary({
   } = pricing;
 
   return (
-    <div className="rounded-2xl border border-primary/30 bg-surface/85 backdrop-blur-md p-6 space-y-5 shadow-2xl shadow-primary/10">
-      {/* Top Status Strip */}
-      <div className="flex items-center justify-between border-b border-line pb-4">
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-text">
-            3 Boosters FPL Online
+    <div className="rounded-2xl border border-white/15 bg-[#121214] backdrop-blur-md p-6 sm:p-7 space-y-6 shadow-2xl relative overflow-hidden">
+      {/* Decorative top accent hairline */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-80" />
+
+      {/* Pass Header */}
+      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div>
+          <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+            ESPORTS MATCH PASS // CS2
+          </span>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+            <span className="font-display text-sm font-black uppercase tracking-wider text-white">
+              3 Boosters FPL em Standby
+            </span>
+          </div>
+        </div>
+        <div className="text-right font-mono">
+          <span className="inline-flex items-center gap-1 text-xs text-neutral-300 font-bold bg-white/5 border border-white/10 px-2 py-1 rounded-md">
+            <Clock className="h-3.5 w-3.5 text-white" />
+            ~{estimatedHours}h ETA
           </span>
         </div>
-        <span className="flex items-center gap-1 font-mono text-xs text-muted">
-          <Clock className="h-3.5 w-3.5 text-primary-text" />
-          ~{estimatedHours}h
-        </span>
       </div>
 
-      {/* Compact Itemized Lines */}
-      <dl className="space-y-2 text-xs font-mono">
-        {breakdown.map((item, idx) => (
-          <div key={idx} className="flex items-center justify-between gap-2">
-            <dt className="text-muted truncate">{item.label}</dt>
-            <dd className="font-bold text-text shrink-0">
-              {item.amount > 0 ? `R$ ${item.amount}` : "Incluso"}
-            </dd>
-          </div>
-        ))}
-      </dl>
+      {/* Itemized Breakdown Lines */}
+      <div className="space-y-2.5">
+        <span className="font-mono text-[10px] uppercase font-bold tracking-widest text-neutral-400 block">
+          DISCRIMINAÇÃO DO PACOTE
+        </span>
+        <dl className="space-y-2 text-xs font-mono">
+          {breakdown.map((item, idx) => (
+            <div key={idx} className="flex items-center justify-between gap-2 py-0.5 border-b border-white/[0.04]">
+              <dt className="text-neutral-400 truncate">{item.label}</dt>
+              <dd className="font-bold text-white shrink-0">
+                {item.amount > 0 ? `R$ ${item.amount},00` : "INCLUSO"}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
 
-      {/* Main Price Readout */}
-      <div className="rounded-xl border border-primary/30 bg-surface-2/90 backdrop-blur-sm p-4 space-y-3 shadow-inner">
-        <div className="flex items-baseline justify-between">
+      {/* Perforated Ticket Total Card */}
+      <div className="rounded-xl border border-dashed border-white/20 bg-white/[0.03] p-5 space-y-3 relative">
+        <div className="flex items-baseline justify-between gap-4">
           <div>
-            <span className="block font-mono text-[10px] uppercase tracking-wider text-muted">
-              TOTAL NO PIX (5% OFF)
+            <span className="block font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+              VALOR FINAL NO PIX
             </span>
             <div className="mt-1 flex items-baseline gap-1 font-display">
-              <span className="text-base font-bold text-primary-text">R$</span>
+              <span className="text-lg font-bold text-white">R$</span>
               <AnimatedCounter
                 value={pixTotalPrice}
-                className="text-4xl sm:text-5xl font-black tracking-tight text-text tabular-nums"
+                className="text-4xl sm:text-5xl font-black tracking-tight text-white tabular-nums"
               />
-              <span className="font-mono text-xs text-muted">,00</span>
+              <span className="font-mono text-sm text-neutral-400">,00</span>
             </div>
           </div>
 
-          <div className="text-right font-mono">
-            <span className="inline-flex items-center gap-1 rounded bg-primary/15 px-2 py-0.5 text-[10px] font-bold text-primary-text border border-primary/30">
+          <div className="text-right font-mono space-y-1">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-0.5 text-[10px] font-black text-black shadow-md shadow-white/20">
               <QrCode className="h-3 w-3" />
-              -R$ {pixDiscountAmount}
+              -5% PIX (R$ {pixDiscountAmount})
             </span>
-            <span className="block text-[11px] text-muted mt-1 line-through">
+            <span className="block text-[11px] text-neutral-400 line-through">
               Cartão: R$ {totalPrice},00
             </span>
           </div>
         </div>
       </div>
 
-      {/* Primary Action Button */}
+      {/* Primary Action Button: Pure White Inverted High-Fashion Button */}
       <button
         type="button"
         onClick={onCheckout}
         disabled={disabled || isLoading}
         aria-label="Iniciar pedido agora"
         className={cn(
-          "w-full py-4 px-6 rounded-xl font-display font-extrabold text-sm uppercase tracking-wider",
-          "bg-primary text-primary-foreground shadow-lg shadow-primary/20",
-          "hover:brightness-110 esports-button-glow enabled:active:scale-[0.96] transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out flex items-center justify-center gap-2 pl-6 pr-5",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring",
-          disabled && "opacity-50 pointer-events-none"
+          "w-full py-4.5 px-6 rounded-xl font-display font-black text-sm uppercase tracking-widest",
+          "bg-white text-black shadow-[0_4px_24px_rgba(255,255,255,0.2)]",
+          "hover:bg-neutral-200 active:scale-[0.98] transition-all duration-150 ease-out flex items-center justify-center gap-2 cursor-pointer",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
+          disabled && "opacity-40 pointer-events-none"
         )}
       >
-        <span>Iniciar Boost Agora</span>
-        <ArrowRight className="h-4 w-4" />
+        <span>CONTRATAR BOOST AGORA</span>
+        <ArrowRight className="h-4 w-4 stroke-[3]" />
       </button>
 
-      {/* Minimalist Trust Footer */}
-      <div className="flex items-center justify-between pt-1 font-mono text-[11px] text-muted">
-        <span className="flex items-center gap-1.5">
-          <ShieldCheck className="h-3.5 w-3.5 text-primary-text" />
-          100% VAC Safe
+      {/* Trust & Compliance Telemetry */}
+      <div className="flex items-center justify-between pt-2 border-t border-white/10 font-mono text-[10px] text-neutral-400 uppercase tracking-wider">
+        <span className="flex items-center gap-1.5 text-neutral-300">
+          <ShieldCheck className="h-3.5 w-3.5 text-white" />
+          100% VAC SAFE · RING-3
         </span>
-        <span className="flex items-center gap-1.5">
-          <Lock className="h-3.5 w-3.5 text-primary-text" />
-          Início em 15 min
+        <span className="flex items-center gap-1.5 text-neutral-300">
+          <Lock className="h-3.5 w-3.5 text-white" />
+          INÍCIO EM ~15 MIN
         </span>
       </div>
     </div>

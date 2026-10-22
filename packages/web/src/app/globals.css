@@ -1,9 +1,9 @@
 /**
- * CS2 BOOSTER — CS2 Booster Cobalt (White, Blue, Black) Design System (globals v3.2.0)
+ * CS2 BOOSTER — Monochromatic Noir Pro (Black & White) Design System (globals v3.0.0)
  * -----------------------------------------------------------------------------------
  * - Tokens: generated from design/tokens.json (scripts/generate-tokens.mjs)
  * - Tailwind: real @tailwind pipeline (verified by scripts/smoke-tailwind.mjs)
- * - Palette: CS2 Booster Cobalt (White, Blue, Black) — Pure White, Cobalt Blue, Deep Black
+ * - Palette: Monochromatic Noir — Pure White (#FFFFFF) & Obsidian Noir (#080808)
  * - Token-pure: every value below resolves to a generated CSS custom property.
  *   No raw hex, no raw rgb() outside rgba(var(--token-rgb) / alpha).
  * - Motion ownership: CSS here only for loops/decor; React motion (state) and
@@ -285,7 +285,7 @@
   /* ---------- Esports Glassmorphism & Glow Systems ---------- */
   .esports-card {
     position: relative;
-    background: rgba(10, 14, 26, 0.75);
+    background: rgba(var(--color-surface-rgb) / 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(var(--color-primary-rgb) / 0.22);

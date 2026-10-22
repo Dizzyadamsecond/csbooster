@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 export type ButtonVariant =
@@ -12,7 +15,7 @@ export type ButtonVariant =
 
 export type ButtonSize = "sm" | "md" | "lg";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends HTMLMotionProps<"button"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
 }
@@ -21,16 +24,18 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active shadow-sm hover:shadow-md",
   secondary:
-    "bg-surface-2 text-text border border-line-strong hover:bg-surface-3",
+    "bg-surface-2 text-text border border-line-strong hover:bg-surface-3 hover:border-line-strong",
   ghost:
     "bg-transparent text-text-secondary hover:text-text hover:bg-surface-2",
   outline:
     "bg-transparent text-text border border-line-strong hover:border-primary hover:text-primary-text",
-  soft: "bg-primary-soft text-primary-soft-text hover:bg-primary-soft/70",
+  soft: "bg-primary-soft text-primary-soft-text border border-primary/20 hover:bg-primary-soft/70",
   glass:
     "bg-surface/70 backdrop-blur-md text-text border border-line-strong hover:border-primary/60 hover:bg-surface-2/90",
+  // Destructive action: `danger` is a distinct ramp step from `primary`, so a
+  // destructive button can never be read as the primary CTA.
   danger:
-    "bg-error text-primary-foreground hover:opacity-90 active:opacity-80",
+    "bg-danger text-danger-foreground hover:bg-danger/90 active:bg-danger/95 shadow-sm hover:shadow-md",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -40,19 +45,41 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed";
+  "inline-flex items-center justify-center gap-2 font-semibold whitespace-nowrap transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed";
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = "primary", size = "md", className, disabled, children, ...props }, ref) => (
-    <button
-      ref={ref}
-      className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
-  )
+  (
+    {
+      variant = "primary",
+      size = "md",
+      className,
+      disabled,
+      children,
+      whileTap,
+      transition,
+      ...props
+    },
+    ref
+  ) => {
+    const shouldReduceMotion = useReducedMotion();
+
+    return (
+      <motion.button
+        ref={ref}
+        whileTap={
+          disabled || shouldReduceMotion
+            ? undefined
+            : (whileTap ?? { scale: 0.96 })
+        }
+        transition={transition ?? { duration: 0.15, ease: "easeOut" }}
+        className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </motion.button>
+    );
+  }
 );
 Button.displayName = "Button";
 

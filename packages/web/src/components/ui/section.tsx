@@ -1,6 +1,7 @@
 import React from "react";
+import { cn } from "@/lib/cn";
 
-export interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   id?: string;
   subtitle?: string;
 }
@@ -9,13 +10,17 @@ export const Section: React.FC<SectionProps> = ({
   id,
   subtitle,
   children,
-  className = "",
+  className,
   ...props
 }) => {
   return (
-    <section id={id} className={`max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16 ${className}`} {...props}>
+    <section
+      id={id}
+      className={cn("mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16", className)}
+      {...props}
+    >
       {subtitle && (
-        <p className="text-red-400 text-xs font-mono font-bold uppercase tracking-widest mb-3">
+        <p className="mb-3 font-mono text-xs font-bold uppercase tracking-widest text-primary-text">
           {subtitle}
         </p>
       )}
@@ -31,16 +36,16 @@ export const SectionTitle: React.FC<{
   center?: boolean;
 }> = ({ eyebrow, title, subtitle, center = false }) => {
   return (
-    <div className={`max-w-2xl ${center ? "text-center mx-auto" : ""}`}>
+    <div className={cn("max-w-2xl", center && "mx-auto text-center")}>
       {eyebrow && (
-        <p className="text-red-400 text-xs font-mono font-bold uppercase tracking-widest mb-3">
+        <p className="mb-3 font-mono text-xs font-bold uppercase tracking-widest text-primary-text">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl sm:text-4xl font-bold text-text tracking-tight font-display">
+      <h2 className="font-display text-3xl font-bold tracking-tight text-text sm:text-4xl">
         {title}
       </h2>
-      {subtitle && <p className="text-muted text-base mt-3 leading-relaxed">{subtitle}</p>}
+      {subtitle && <p className="mt-3 text-base leading-relaxed text-muted">{subtitle}</p>}
     </div>
   );
 };

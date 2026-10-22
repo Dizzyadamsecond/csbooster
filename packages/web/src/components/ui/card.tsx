@@ -8,7 +8,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const variantClasses: Record<CardVariant, string> = {
-  default: "bg-surface border border-line",
+  default: "bg-surface border border-line hover:border-line-strong",
   elevated: "bg-surface-2 border border-line-strong shadow-md",
   glass: "bg-surface/80 backdrop-blur-xl border border-line-strong shadow-lg",
   outline: "bg-transparent border border-line-strong",
@@ -19,7 +19,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        "rounded-xl transition-all duration-200",
+        "rounded-xl transition-colors duration-200",
         variantClasses[variant],
         className
       )}
@@ -36,7 +36,7 @@ export const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   children,
   ...props
 }) => (
-  <div className={cn("p-4 border-b border-line", className)} {...props}>
+  <div className={cn("border-b border-line p-4", className)} {...props}>
     {children}
   </div>
 );
@@ -47,7 +47,7 @@ export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   ...props
 }) => (
   <h3
-    className={cn("text-lg font-bold text-text tracking-tight font-display", className)}
+    className={cn("font-display text-lg font-bold tracking-tight text-text", className)}
     {...props}
   >
     {children}
@@ -70,7 +70,7 @@ export const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => (
   <div
-    className={cn("p-4 border-t border-line flex items-center gap-3", className)}
+    className={cn("flex items-center gap-3 border-t border-line p-4", className)}
     {...props}
   >
     {children}

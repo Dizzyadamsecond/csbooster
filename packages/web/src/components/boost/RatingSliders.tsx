@@ -3,6 +3,7 @@
 import React, { useCallback } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Minus, Plus, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/cn";
 import {
   ServiceType,
   COMPETITIVE_RANKS,
@@ -79,38 +80,72 @@ export function RatingSliders({
   );
 
   return (
-    <div className="rounded-2xl border border-primary/25 bg-surface/85 backdrop-blur-md p-5 sm:p-6 space-y-6 shadow-xl shadow-primary/5">
+    <div className="rounded-2xl border border-white/10 bg-[#121214] backdrop-blur-md p-4 sm:p-7 space-y-6 shadow-2xl">
       {/* PREMIER MODE: Visual CS2 Rating Plates + Sliders */}
       {serviceType === "premier" && (
         <div className="space-y-6" role="group" aria-label="CS Rating Premier">
           {/* Visual CS2 Rating Plate Comparison Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-primary/20 bg-surface-2/90 backdrop-blur-sm p-4 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-white/15 bg-white/[0.03] backdrop-blur-sm p-4 sm:p-5 shadow-inner">
             <div className="space-y-1">
-              <span className="block font-mono text-[10px] uppercase tracking-wider text-muted">
-                ATUAL
+              <span className="block font-mono text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
+                RATING ATUAL
               </span>
               <Cs2PremierBadge rating={currentRating} size="md" />
             </div>
 
-            <div className="flex flex-col items-center gap-1 px-2">
-              <ArrowRight className="h-5 w-5 text-primary-text" />
-              <span className="rounded-full bg-primary-soft px-2.5 py-0.5 font-mono text-[11px] font-bold text-primary-text border border-primary/30">
+            <div className="flex flex-col items-center gap-1.5 px-2">
+              <ArrowRight className="h-5 w-5 text-white" />
+              <span className="rounded-full bg-white px-3 py-1 font-mono text-[11px] font-black text-black shadow-md shadow-white/20">
                 +{Math.max(0, targetRating - currentRating).toLocaleString("pt-BR")} PTS
               </span>
             </div>
 
             <div className="space-y-1 text-right">
-              <span className="block font-mono text-[10px] uppercase tracking-wider text-primary-text font-bold">
-                OBJETIVO
+              <span className="block font-mono text-[10px] uppercase tracking-widest text-white font-black">
+                RATING ALVO
               </span>
               <Cs2PremierBadge rating={targetRating} size="md" />
             </div>
           </div>
 
+          {/* Quick Target Tiers Shortcut */}
+          <div className="space-y-2">
+            <span className="text-[11px] font-mono text-neutral-400 uppercase font-bold tracking-wider block">
+              Atalhos de Patente Alvo:
+            </span>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {[
+                { label: "10K", desc: "Intermediário", val: 10000 },
+                { label: "15K", desc: "Avançado", val: 15000 },
+                { label: "20K", desc: "Elite", val: 20000 },
+                { label: "25K", desc: "Pro", val: 25000 },
+                { label: "30K", desc: "Global", val: 30000 },
+              ].map((tier) => (
+                <button
+                  key={tier.val}
+                  type="button"
+                  onClick={() => handleTargetPremier(tier.val)}
+                  disabled={disabled}
+                  className={cn(
+                    "px-2.5 sm:px-3 py-1.5 rounded-lg font-mono text-xs font-bold border transition-all duration-150 flex items-center gap-1",
+                    targetRating === tier.val
+                      ? "border-white bg-white text-black shadow-md shadow-white/10"
+                      : "border-white/10 bg-white/5 text-neutral-300 hover:border-white/30 hover:bg-white/10"
+                  )}
+                >
+                  <span>{tier.label}</span>
+                  <span className={cn("text-[10px] hidden sm:inline", targetRating === tier.val ? "text-neutral-700" : "text-neutral-400")}>
+                    ({tier.desc})
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Sliders */}
-          <div className="space-y-5">
+          <div className="space-y-6 pt-2">
             <Slider
-              label="Rating Atual"
+              label="Rating Premier Atual"
               min={1000}
               max={29000}
               step={250}
@@ -122,7 +157,7 @@ export function RatingSliders({
             />
 
             <Slider
-              label="Rating Alvo"
+              label="Rating Premier Desejado"
               min={Math.max(1500, currentRating + 250)}
               max={30000}
               step={250}
@@ -139,9 +174,9 @@ export function RatingSliders({
       {/* COMPETITIVE MODE: Visual Rank Crests + Sliders */}
       {serviceType === "competitive" && (
         <div className="space-y-6" role="group" aria-label="Patentes Competitivas">
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-line bg-surface-2 p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/15 bg-white/[0.03] p-4 sm:p-5">
             <Cs2RankBadge rankId={currentRating} />
-            <ArrowRight className="h-4 w-4 text-primary-text shrink-0" />
+            <ArrowRight className="h-5 w-5 text-white shrink-0" />
             <Cs2RankBadge rankId={targetRating} />
           </div>
 
@@ -180,12 +215,12 @@ export function RatingSliders({
       {/* COACHING MODE: Clean Hour Control */}
       {serviceType === "coaching" && (
         <div className="space-y-5" role="group" aria-label="Coaching Pro">
-          <div className="flex items-center justify-between rounded-xl border border-line bg-surface-2 p-4">
+          <div className="flex items-center justify-between rounded-xl border border-white/15 bg-white/[0.03] p-4 sm:p-5">
             <div>
-              <span className="block font-mono text-[10px] uppercase tracking-wider text-muted">
+              <span className="block font-mono text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
                 SESSÃO 1V1 · FPL COACH
               </span>
-              <span className="font-mono text-sm font-bold text-primary-text">
+              <span className="font-mono text-sm font-bold text-white">
                 R$ {COACHING_HOURLY_RATE}/hora
               </span>
             </div>
@@ -196,11 +231,11 @@ export function RatingSliders({
                 aria-label="Diminuir horas"
                 disabled={disabled || targetRating <= 1}
                 onClick={() => handleCoachingHoursChange(-1)}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-surface hover:bg-surface-3 disabled:opacity-40 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 disabled:opacity-30 transition-colors"
               >
-                <Minus className="h-4 w-4 text-text" />
+                <Minus className="h-4 w-4 text-white" />
               </button>
-              <span className="font-display text-3xl font-black text-text min-w-[3.2rem] text-center tabular-nums">
+              <span className="font-display text-3xl font-black text-white min-w-[3.5rem] text-center tabular-nums">
                 {targetRating}h
               </span>
               <button
@@ -208,9 +243,9 @@ export function RatingSliders({
                 aria-label="Aumentar horas"
                 disabled={disabled || targetRating >= 20}
                 onClick={() => handleCoachingHoursChange(1)}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-line bg-surface hover:bg-surface-3 disabled:opacity-40 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 bg-white/5 hover:bg-white/10 disabled:opacity-30 transition-colors"
               >
-                <Plus className="h-4 w-4 text-text" />
+                <Plus className="h-4 w-4 text-white" />
               </button>
             </div>
           </div>
