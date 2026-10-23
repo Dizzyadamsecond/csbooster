@@ -73,7 +73,7 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
   const copyHash = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard
-        .writeText("9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24")
+        .writeText("3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1")
         .catch(() => {});
       setCopiedSha(true);
       setTimeout(() => setCopiedSha(false), 2000);
@@ -161,39 +161,39 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
               </motion.button>
             </div>
 
-            {/* 3 Giant Hardware Readouts */}
-            <div className="grid grid-cols-3 gap-3">
-              <div className="rounded-xl border border-line bg-surface-2 p-4">
-                <span className="block font-mono text-[10px] uppercase tracking-wider text-muted">
+            {/* 3 Refined Hardware Readouts */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="rounded-xl border border-line bg-surface-2 p-3 sm:p-4">
+                <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-muted">
                   1% LOW FPS
                 </span>
                 <div className="mt-1 flex items-baseline gap-1 font-display">
                   <AnimatedCounter
                     value={displayFps}
-                    className="text-3xl sm:text-4xl font-black text-primary-text tabular-nums"
+                    className="text-lg sm:text-xl md:text-2xl font-bold text-primary-text tabular-nums"
                   />
-                  <span className="font-mono text-[11px] text-muted">FPS</span>
+                  <span className="font-mono text-[10px] sm:text-[11px] text-muted">FPS</span>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-line bg-surface-2 p-4">
-                <span className="block font-mono text-[10px] uppercase tracking-wider text-muted">
+              <div className="rounded-xl border border-line bg-surface-2 p-3 sm:p-4">
+                <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-muted">
                   SUB-TICK PING
                 </span>
                 <div className="mt-1 flex items-baseline gap-1 font-display">
                   <AnimatedCounter
                     value={displayPing}
-                    className="text-3xl sm:text-4xl font-black text-text tabular-nums"
+                    className="text-lg sm:text-xl md:text-2xl font-bold text-text tabular-nums"
                   />
-                  <span className="font-mono text-[11px] text-muted">ms</span>
+                  <span className="font-mono text-[10px] sm:text-[11px] text-muted">ms</span>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-line bg-surface-2 p-4">
-                <span className="block font-mono text-[10px] uppercase tracking-wider text-muted">
+              <div className="rounded-xl border border-line bg-surface-2 p-3 sm:p-4">
+                <span className="block font-mono text-[9px] sm:text-[10px] uppercase tracking-wider text-muted">
                   KERNEL TIMER
                 </span>
-                <div className="mt-1 font-display text-2xl sm:text-3xl font-black text-text tabular-nums">
+                <div className="mt-1 font-display text-base sm:text-lg md:text-xl font-bold text-text tabular-nums">
                   {displayDpc}
                 </div>
               </div>

@@ -616,12 +616,12 @@ export function OnboardingGuide({
                       </div>
 
                       <div className="flex items-center justify-between rounded-lg bg-black/40 px-2.5 py-1.5 font-mono text-[10px] text-neutral-400 border border-white/5">
-                        <span>SHA-256: 9DA6A8D2...1E24</span>
+                        <span>SHA-256: 3A71A3A8...F4E1</span>
                         <button
                           type="button"
                           onClick={() => {
                             if (typeof navigator !== "undefined" && navigator.clipboard) {
-                              navigator.clipboard.writeText("9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24");
+                              navigator.clipboard.writeText("3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1");
                               setDemoCopiedHash(true);
                               playSound("tick");
                               setTimeout(() => setDemoCopiedHash(false), 2000);

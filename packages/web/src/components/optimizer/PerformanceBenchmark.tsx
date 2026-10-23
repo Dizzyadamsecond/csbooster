@@ -114,7 +114,7 @@ export const PerformanceBenchmark: React.FC<PerformanceBenchmarkProps> = ({
               </span>
             </div>
             <div className="mt-3 flex items-baseline gap-3">
-              <span className="font-display text-4xl font-bold tracking-tight text-text">
+              <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-text">
                 <AnimatedCounter
                   value={currentLatency}
                   suffix=" ms"
@@ -174,7 +174,7 @@ export const PerformanceBenchmark: React.FC<PerformanceBenchmarkProps> = ({
               </span>
             </div>
             <div className="mt-3 flex items-baseline gap-3">
-              <span className="font-display text-4xl font-bold tracking-tight text-text">
+              <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-text">
                 <AnimatedCounter
                   value={currentFpsLow}
                   suffix=" FPS"
@@ -233,7 +233,7 @@ export const PerformanceBenchmark: React.FC<PerformanceBenchmarkProps> = ({
               </span>
             </div>
             <div className="mt-3 flex items-baseline gap-3">
-              <span className="font-display text-4xl font-bold tracking-tight text-text">
+              <span className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-text">
                 <AnimatedCounter
                   value={currentInputLag}
                   suffix=" ms"

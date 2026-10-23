@@ -8,6 +8,7 @@ import {
   OnboardingWalkthrough,
   SecurityGuaranteeGrid,
   OptimizerDownloadCard,
+  SystemTelemetryHud,
 } from "@/components/optimizer";
 import {
   AccordionItem,
@@ -257,7 +258,7 @@ export default function HomePage() {
   const handleCopyShaTop = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard
-        .writeText("9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24")
+        .writeText("3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1")
         .catch(() => {});
       setCopiedShaTop(true);
       setTimeout(() => setCopiedShaTop(false), 2000);
@@ -270,37 +271,37 @@ export default function HomePage() {
       <Ticker />
 
       {/* Top Floating Navigation Header */}
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#080808]/95 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#080808]/95 backdrop-blur-xl w-full">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 min-h-[3.75rem] py-1.5 sm:py-0 flex items-center justify-between gap-2 sm:gap-4 overflow-hidden w-full">
           {/* Brand & Platform Pill */}
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black font-display font-black text-sm tracking-wider shadow-lg shadow-white/15">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-white text-black font-display font-black text-xs sm:text-sm tracking-wider shadow-md shadow-white/15">
                 CS2
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-display text-base sm:text-lg font-black tracking-widest text-white leading-tight">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-display text-xs sm:text-sm md:text-base font-black tracking-wider sm:tracking-widest text-white leading-tight">
                     CS2 BOOSTER
                   </span>
-                  <span className="rounded-full bg-white/10 px-2 py-0.5 font-mono text-[9px] font-extrabold uppercase tracking-widest text-white border border-white/20 hidden sm:inline-block">
+                  <span className="rounded-full bg-white/10 px-1.5 py-0.2 font-mono text-[8px] sm:text-[9px] font-extrabold uppercase tracking-widest text-white border border-white/20 hidden sm:inline-block">
                     V3.0
                   </span>
                 </div>
-                <span className="font-mono text-[10px] text-neutral-400 uppercase tracking-wider hidden sm:block">
+                <span className="font-mono text-[9px] text-neutral-400 uppercase tracking-wider hidden sm:block">
                   Native Windows Engine (.exe)
                 </span>
               </div>
             </div>
 
             {/* Platform Spec Pill */}
-            <div className="hidden lg:flex items-center gap-2 rounded-xl border border-white/10 bg-[#121214] px-3 py-1.5 shadow-inner">
-              <Gamepad2 className="h-4 w-4 text-white" />
+            <div className="hidden xl:flex items-center gap-2 rounded-xl border border-white/10 bg-[#121214] px-3 py-1.5 shadow-inner">
+              <Gamepad2 className="h-3.5 w-3.5 text-white" />
               <div className="flex flex-col text-left">
-                <span className="font-display text-[11px] font-black uppercase text-white tracking-wider leading-none">
+                <span className="font-display text-[10px] font-bold uppercase text-white tracking-wider leading-none">
                   COUNTER-STRIKE 2
                 </span>
-                <span className="font-mono text-[9px] text-neutral-400 leading-none mt-0.5">
+                <span className="font-mono text-[8px] text-neutral-400 leading-none mt-0.5">
                   Sub-Tick &amp; Input Lag Engine
                 </span>
               </div>
@@ -308,9 +309,9 @@ export default function HomePage() {
           </div>
 
           {/* Center Navigation Tabs */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <nav
-              className="relative flex items-center gap-1 rounded-full border border-white/10 bg-[#121214] p-1.5 shadow-inner overflow-x-auto scrollbar-none"
+              className="relative flex items-center gap-0.5 sm:gap-1 rounded-full border border-white/10 bg-[#121214] p-1 shadow-inner overflow-x-auto scrollbar-none max-w-[calc(100vw-120px)] sm:max-w-none"
               role="tablist"
               aria-label="Navegação do software"
               aria-orientation="horizontal"
@@ -332,7 +333,7 @@ export default function HomePage() {
                     onClick={() => setActiveTab(tab.id)}
                     onKeyDown={(e) => handleTabKeyDown(e, index)}
                     className={cn(
-                      "relative px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-150 select-none whitespace-nowrap",
+                      "relative px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-150 select-none whitespace-nowrap",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
                       isActive
                         ? "text-black font-black"
@@ -411,11 +412,11 @@ export default function HomePage() {
                       <span>ENGINE V3.0.0 // STANDALONE AOT · WINDOWS 10 &amp; 11 X64</span>
                     </div>
 
-                    <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                    <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
                       CS2 BOOSTER <span className="text-neutral-400 font-light">//</span> MOTOR DE BAIXA LATÊNCIA &amp; SUB-TICK
                     </h1>
 
-                    <p className="font-sans text-sm sm:text-base text-neutral-300 leading-relaxed max-w-2xl">
+                    <p className="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed max-w-2xl">
                       Software executável nativo ultraleve (149 KB) em C# .NET 8 AOT para Windows. Fixa a taxa de clock do kernel em 0.500ms, isola interrupções DPC fora do Core 0, elimina o atraso artificial de 40ms do TCP e estabiliza o 1% Low FPS em tiroteios e smokes. 100% Ring-3 User Mode sem injeção de DLL.
                     </p>
 
@@ -513,6 +514,9 @@ export default function HomePage() {
                   })}
                 </div>
               </section>
+
+              {/* Real-time Hardware & Latency Telemetry HUD */}
+              <SystemTelemetryHud />
 
               {/* Integrated Optimizer Suite: Hardware Telemetry Panel & Download Card */}
               <OptimizerSection />

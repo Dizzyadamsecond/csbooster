@@ -664,7 +664,7 @@ import {
   FileArchive,
   Monitor
 } from "lucide-react";
-var SHA256_HASH = "9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24";
+var SHA256_HASH = "3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1";
 var OptimizerDownloadCard = ({
   className
 }) => {
@@ -1126,8 +1126,8 @@ if (!streamingCard1HasDynamicText || !lowendCard1HasDynamicText) {
   );
 }
 console.log("\n>>> [2/3] OptimizerDownloadCard & Binary Hash Integrity <<<");
-var EXPECTED_EXE_HASH = "9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24";
-var EXPECTED_ZIP_HASH = "8F21672F6313C1B18A648E63B41D6875F55A6065C883DA6B79389D10138BC42C";
+var EXPECTED_EXE_HASH = "3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1";
+var EXPECTED_ZIP_HASH = "84600411C4C465ED37AF6A29169642E2E1C68386F7D7A393A5D2EFF4E2EDD2FC";
 var webRootDir = path.resolve(process.cwd());
 var exePath = path.join(webRootDir, "public", "downloads", "Cs2Booster.exe");
 var zipPath = path.join(webRootDir, "public", "downloads", "Cs2Booster-v1.0.0.zip");

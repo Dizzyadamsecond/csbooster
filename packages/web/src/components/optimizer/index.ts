@@ -17,6 +17,9 @@ export type { SecurityGuaranteeGridProps } from "./SecurityGuaranteeGrid";
 export { OptimizerDownloadCard } from "./OptimizerDownloadCard";
 export type { OptimizerDownloadCardProps } from "./OptimizerDownloadCard";
 
+export { SystemTelemetryHud } from "./SystemTelemetryHud";
+export type { TelemetryMetric } from "./SystemTelemetryHud";
+
 export { OPTIMIZER_PROFILES } from "./types";
 export type {
   OptimizerProfileId,

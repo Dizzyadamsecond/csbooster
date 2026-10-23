@@ -20,7 +20,7 @@ export interface OptimizerDownloadCardProps {
   className?: string;
 }
 
-const SHA256_HASH = "9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24";
+const SHA256_HASH = "3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1";
 
 export const OptimizerDownloadCard: React.FC<OptimizerDownloadCardProps> = ({
   className,
@@ -56,11 +56,11 @@ export const OptimizerDownloadCard: React.FC<OptimizerDownloadCardProps> = ({
             <Badge tone="accent">149 KB PORTÁTIL</Badge>
           </div>
 
-          <h3 className="font-display text-2xl font-bold tracking-tight text-text sm:text-3xl">
+          <h3 className="font-display text-lg font-bold tracking-tight text-text sm:text-xl">
             Pronto para Jogar CS2 com Menor Latência e Zero Stutter?
           </h3>
 
-          <p className="text-sm leading-relaxed text-muted sm:text-base">
+          <p className="text-xs leading-relaxed text-muted sm:text-sm">
             Baixe o executável nativo em C# .NET 8 AOT. Não requer instalação, não requer cadastro e
             cria backup automático das suas configurações do Windows antes de aplicar qualquer ajuste.
           </p>

@@ -25,8 +25,8 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="app min-h-screen bg-[#080808] text-white selection:bg-white selection:text-black">
-        <div className="tidal-grid">
+      <body className="app min-h-screen bg-[#080808] text-white selection:bg-white selection:text-black overflow-x-hidden w-full">
+        <div className="tidal-grid w-full overflow-x-hidden">
           {children}
         </div>
       </body>

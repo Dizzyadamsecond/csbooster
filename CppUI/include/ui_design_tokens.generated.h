@@ -87,12 +87,12 @@ struct TypographyTokens {
     std::wstring font_family_monospace = L"Consolas";
 
     // Font sizes (pixels)
-    int font_size_xs = 12;
-    int font_size_sm = 14;
-    int font_size_md = 16;
-    int font_size_lg = 18;
-    int font_size_xl = 20;
-    int font_size_2xl = 24;
+    int font_size_xs = 11;
+    int font_size_sm = 13;
+    int font_size_md = 14;
+    int font_size_lg = 16;
+    int font_size_xl = 18;
+    int font_size_2xl = 20;
 
     // Font weights
     int font_weight_normal = 400;

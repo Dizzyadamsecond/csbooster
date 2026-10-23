@@ -25,9 +25,9 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
   <!-- ============================ FONTS ============================ -->
-  <FontFamily x:Key="Font.Display">Chakra Petch, Segoe UI</FontFamily>
-  <FontFamily x:Key="Font.Body">Segoe UI</FontFamily>
-  <FontFamily x:Key="Font.Mono">Cascadia Mono, Consolas</FontFamily>
+  <FontFamily x:Key="Font.Display">Geist, Inter, Segoe UI</FontFamily>
+  <FontFamily x:Key="Font.Body">Inter, Segoe UI</FontFamily>
+  <FontFamily x:Key="Font.Mono">Geist Mono, Cascadia Mono, Consolas</FontFamily>
 
   <!-- ============================ SPACING SCALE ============================ -->
   <sys:Double x:Key="Space.1">4</sys:Double>
@@ -59,9 +59,9 @@
     <Setter Property="Background" Value="{DynamicResource Brush.Primary}"/>
     <Setter Property="BorderBrush" Value="Transparent"/>
     <Setter Property="BorderThickness" Value="1"/>
-    <Setter Property="FontSize" Value="13"/>
+    <Setter Property="FontSize" Value="12"/>
     <Setter Property="FontWeight" Value="SemiBold"/>
-    <Setter Property="Padding" Value="16,9"/>
+    <Setter Property="Padding" Value="14,8"/>
     <Setter Property="Cursor" Value="Hand"/>
     <Setter Property="SnapsToDevicePixels" Value="True"/>
     <Setter Property="Template">
@@ -444,7 +444,7 @@
   <Style x:Key="EyebrowText" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.PrimaryText}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Mono}"/>
-    <Setter Property="FontSize" Value="11"/>
+    <Setter Property="FontSize" Value="10"/>
     <Setter Property="FontWeight" Value="Bold"/>
   </Style>
 
@@ -452,9 +452,9 @@
   <Style x:Key="SectionTitle" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
-    <Setter Property="FontSize" Value="26"/>
+    <Setter Property="FontSize" Value="18"/>
     <Setter Property="FontWeight" Value="Bold"/>
-    <Setter Property="Margin" Value="0,6,0,0"/>
+    <Setter Property="Margin" Value="0,4,0,0"/>
     <Setter Property="TextWrapping" Value="Wrap"/>
   </Style>
 
@@ -462,7 +462,7 @@
   <Style x:Key="CardTitle" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
-    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="FontSize" Value="13"/>
     <Setter Property="FontWeight" Value="SemiBold"/>
   </Style>
 
@@ -470,7 +470,7 @@
   <Style x:Key="MetricLabel" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Muted}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Mono}"/>
-    <Setter Property="FontSize" Value="10"/>
+    <Setter Property="FontSize" Value="9"/>
     <Setter Property="FontWeight" Value="Bold"/>
   </Style>
 
@@ -478,9 +478,9 @@
   <Style x:Key="MetricValue" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
-    <Setter Property="FontSize" Value="30"/>
+    <Setter Property="FontSize" Value="20"/>
     <Setter Property="FontWeight" Value="Bold"/>
-    <Setter Property="Margin" Value="0,4,0,0"/>
+    <Setter Property="Margin" Value="0,2,0,0"/>
   </Style>
 
   <!-- ======================= MONO / BODY =========================== -->
