@@ -125,9 +125,9 @@ export default function StyleguidePage() {
       <motion.section {...reveal}>
         <Heading eyebrow="03 — Typography">Tipografia</Heading>
         <div className="space-y-4">
-          <p className="text-4xl font-bold text-text font-display tracking-tight">Plus Jakarta Sans — Clean Display</p>
-          <p className="text-xl text-text">Plus Jakarta Sans & Inter — corpo de texto ultra-clean e interface</p>
-          <p className="text-sm text-muted font-mono">JetBrains Mono — dados, preços, labels técnicos</p>
+          <p className="text-4xl font-bold text-text font-display tracking-tight">Geist — Ultra-Clean Display</p>
+          <p className="text-xl text-text">Geist & Inter — corpo de texto ultra-clean, legível e moderno</p>
+          <p className="text-sm text-muted font-mono">Geist Mono & JetBrains Mono — dados, telemetria e labels técnicos</p>
         </div>
       </motion.section>
 

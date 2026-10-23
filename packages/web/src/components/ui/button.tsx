@@ -90,20 +90,44 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 export interface ButtonLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  extends HTMLMotionProps<"a"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
 }
 
 export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
-  ({ variant = "primary", size = "md", className, children, ...props }, ref) => (
-    <a
-      ref={ref}
-      className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
-      {...props}
-    >
-      {children}
-    </a>
-  )
+  (
+    {
+      variant = "primary",
+      size = "md",
+      className,
+      children,
+      whileHover,
+      whileTap,
+      transition,
+      ...props
+    },
+    ref
+  ) => {
+    const shouldReduceMotion = useReducedMotion();
+
+    return (
+      <motion.a
+        ref={ref}
+        whileHover={
+          shouldReduceMotion ? undefined : (whileHover ?? { scale: 1.015 })
+        }
+        whileTap={
+          shouldReduceMotion ? undefined : (whileTap ?? { scale: 0.97 })
+        }
+        transition={transition ?? { duration: 0.15, ease: "easeOut" }}
+        className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
+        {...props}
+      >
+        {children}
+      </motion.a>
+    );
+  }
 );
 ButtonLink.displayName = "ButtonLink";
+

@@ -461,15 +461,16 @@ export default function HomePage() {
                   {/* Clean Visual Mockup Card */}
                   <div className="lg:col-span-5">
                     <motion.div
-                      whileHover={{ y: -3, scale: 1.01 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      whileHover={{ y: -4, scale: 1.01 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
                       className="group relative overflow-hidden rounded-xl border border-white/20 bg-black/60 shadow-2xl backdrop-blur-md"
                     >
                       <img
                         src="/images/cs2-booster-hero.jpg"
                         alt="CS2 Booster Low-Latency Engine Interface"
-                        className="w-full h-auto object-cover block transition-transform duration-300 group-hover:scale-[1.02]"
+                        className="w-full h-auto object-cover block transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                       />
+                      <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono bg-black/70 backdrop-blur-md px-3 py-2 rounded-lg border border-white/10">
                         <div className="flex items-center gap-2">

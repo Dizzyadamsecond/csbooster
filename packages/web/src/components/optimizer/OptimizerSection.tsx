@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 import {
   Download,
@@ -39,6 +40,7 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
   const [activeProfile, setActiveProfile] = useState<OptimizerProfileId>("competitive");
   const [isOptimized, setIsOptimized] = useState(true);
   const [copiedSha, setCopiedSha] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   // 4 Low-Latency Engine Modules Toggles
   const [timerResolution, setTimerResolution] = useState(true);
@@ -107,7 +109,7 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
           <div className="p-5 space-y-5">
             {/* Profile Switcher + 1-Click Restore Toggle */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="inline-flex rounded-xl border border-line bg-surface-2 p-1">
+              <div className="relative inline-flex rounded-xl border border-line bg-surface-2 p-1">
                 {PROFILES.map((prof) => {
                   const active = activeProfile === prof.id;
                   return (
@@ -119,23 +121,36 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                         setIsOptimized(true);
                       }}
                       className={cn(
-                        "rounded-lg px-3 py-1.5 font-display text-xs font-bold uppercase transition-all",
+                        "relative rounded-lg px-3 py-1.5 font-display text-xs font-bold uppercase transition-colors duration-150 active:scale-95 select-none",
                         active
-                          ? "bg-primary text-primary-foreground shadow-sm"
-                          : "text-muted hover:text-text"
+                          ? "text-primary-foreground font-black"
+                          : "text-muted hover:text-text hover:bg-surface-3/40"
                       )}
                     >
-                      {prof.label}
+                      {active && (
+                        <motion.span
+                          layoutId="activeOptimizerProfile"
+                          className="absolute inset-0 rounded-lg bg-primary shadow-sm"
+                          transition={
+                            shouldReduceMotion
+                              ? { duration: 0 }
+                              : { type: "spring", stiffness: 450, damping: 32 }
+                          }
+                        />
+                      )}
+                      <span className="relative z-10">{prof.label}</span>
                     </button>
                   );
                 })}
               </div>
 
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => setIsOptimized((prev) => !prev)}
                 className={cn(
-                  "inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 font-mono text-xs font-bold transition-all",
+                  "inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 font-mono text-xs font-bold transition-all shadow-sm",
                   isOptimized
                     ? "border-primary/40 bg-primary-soft text-primary-text"
                     : "border-line bg-surface-2 text-muted hover:text-text"
@@ -143,7 +158,7 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
               >
                 <RotateCcw className="h-3.5 w-3.5" />
                 <span>{isOptimized ? "Backup Ativo (Reverter)" : "Aplicar Otimização"}</span>
-              </button>
+              </motion.button>
             </div>
 
             {/* 3 Giant Hardware Readouts */}
@@ -200,11 +215,13 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                 {/* Module 1: Kernel Timer */}
-                <button
+                <motion.button
                   type="button"
+                  whileHover={shouldReduceMotion ? undefined : { scale: 1.01 }}
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   onClick={() => setTimerResolution((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-colors duration-150 text-left",
                     timerResolution
                       ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
                       : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
@@ -224,14 +241,16 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   >
                     {timerResolution ? "0.5ms" : "15.6ms"}
                   </span>
-                </button>
+                </motion.button>
 
                 {/* Module 2: P-Core Affinity */}
-                <button
+                <motion.button
                   type="button"
+                  whileHover={shouldReduceMotion ? undefined : { scale: 1.01 }}
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   onClick={() => setPcoreAffinity((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-colors duration-150 text-left",
                     pcoreAffinity
                       ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
                       : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
@@ -251,14 +270,16 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   >
                     {pcoreAffinity ? "ISOLADO" : "PADRÃO"}
                   </span>
-                </button>
+                </motion.button>
 
                 {/* Module 3: EmptyWorkingSet */}
-                <button
+                <motion.button
                   type="button"
+                  whileHover={shouldReduceMotion ? undefined : { scale: 1.01 }}
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   onClick={() => setWorkingSetFlush((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-colors duration-150 text-left",
                     workingSetFlush
                       ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
                       : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
@@ -278,14 +299,16 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   >
                     {workingSetFlush ? "LIMPO" : "CACHE"}
                   </span>
-                </button>
+                </motion.button>
 
                 {/* Module 4: MMCSS GPU Priority */}
-                <button
+                <motion.button
                   type="button"
+                  whileHover={shouldReduceMotion ? undefined : { scale: 1.01 }}
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   onClick={() => setMmcssPriority((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-colors duration-150 text-left",
                     mmcssPriority
                       ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
                       : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
@@ -305,18 +328,19 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   >
                     {mmcssPriority ? "HIGH/8" : "PADRÃO"}
                   </span>
-                </button>
+                </motion.button>
               </div>
             </div>
 
             {/* Real Native WPF Screenshot Preview */}
-            <div className="relative overflow-hidden rounded-xl border border-line bg-surface-2">
+            <div className="group relative overflow-hidden rounded-xl border border-line bg-surface-2 transition-all duration-300 hover:border-white/30 hover:shadow-2xl">
               <img
                 src="/images/wpf-live.png"
                 alt="Interface real do aplicativo desktop Cs2Booster.exe no Windows"
-                className="w-full h-auto object-cover block outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
+                className="w-full h-auto object-cover block outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10 transition-transform duration-500 ease-out group-hover:scale-[1.015]"
                 loading="lazy"
               />
+              <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
               <div className="flex items-center justify-between border-t border-line bg-surface/95 px-3.5 py-2 font-mono text-[11px] text-muted">
                 <span>Captura real do cliente Windows WPF (.NET 8)</span>
                 <span className="text-primary-text font-bold">Ring-3 User Mode</span>
