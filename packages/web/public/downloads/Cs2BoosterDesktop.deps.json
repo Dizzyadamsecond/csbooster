@@ -1,0 +1,40 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0/win-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {},
+    ".NETCoreApp,Version=v8.0/win-x64": {
+      "Cs2BoosterDesktop/2.0.0": {
+        "dependencies": {
+          "Cs2BoosterCore": "2.0.0"
+        },
+        "runtime": {
+          "Cs2BoosterDesktop.dll": {}
+        }
+      },
+      "Cs2BoosterCore/2.0.0": {
+        "runtime": {
+          "Cs2BoosterCore.dll": {
+            "assemblyVersion": "2.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cs2BoosterDesktop/2.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Cs2BoosterCore/2.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

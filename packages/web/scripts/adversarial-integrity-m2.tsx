@@ -261,8 +261,8 @@ if (!streamingCard1HasDynamicText || !lowendCard1HasDynamicText) {
 // ===============================================================================
 console.log("\n>>> [2/3] OptimizerDownloadCard & Binary Hash Integrity <<<");
 
-const EXPECTED_EXE_HASH = "3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1";
-const EXPECTED_ZIP_HASH = "84600411C4C465ED37AF6A29169642E2E1C68386F7D7A393A5D2EFF4E2EDD2FC";
+const EXPECTED_EXE_HASH = "D89226FAA969C77A488C0828BED4F1D78D0EC9F57859E3DD6ACABFA9740857F5";
+const EXPECTED_ZIP_HASH = "C8117BA6D70D0382DD0C42F5AF7DD88421C324BFC50DDA16331AF2E9CD633620";
 
 // 2.1 Check file existence in public/downloads/
 const webRootDir = path.resolve(process.cwd());

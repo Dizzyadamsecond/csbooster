@@ -214,8 +214,8 @@ export function SystemTelemetryHud({ className }: { className?: string }) {
           <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/5 text-white">
             <currentDetail.icon className="h-3.5 w-3.5" />
           </div>
-          <div className="min-w-0">
-            <div className="flex items-center gap-2">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
               <span className="font-mono text-xs font-bold text-white tracking-wide">
                 {currentDetail.label}:
               </span>
@@ -226,7 +226,7 @@ export function SystemTelemetryHud({ className }: { className?: string }) {
                 (Padrão: {currentDetail.baseline})
               </span>
             </div>
-            <p className="font-sans text-[11px] text-neutral-300 leading-tight truncate mt-0.5">
+            <p className="font-sans text-[11px] text-neutral-300 leading-snug break-words mt-0.5 line-clamp-2 sm:line-clamp-none">
               {currentDetail.description}
             </p>
           </div>

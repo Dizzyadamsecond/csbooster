@@ -452,7 +452,7 @@
   <Style x:Key="SectionTitle" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
-    <Setter Property="FontSize" Value="18"/>
+    <Setter Property="FontSize" Value="17"/>
     <Setter Property="FontWeight" Value="Bold"/>
     <Setter Property="Margin" Value="0,4,0,0"/>
     <Setter Property="TextWrapping" Value="Wrap"/>
@@ -464,6 +464,7 @@
     <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
     <Setter Property="FontSize" Value="13"/>
     <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
   </Style>
 
   <!-- ====================== METRIC LABEL =========================== -->
@@ -472,13 +473,14 @@
     <Setter Property="FontFamily" Value="{StaticResource Font.Mono}"/>
     <Setter Property="FontSize" Value="9"/>
     <Setter Property="FontWeight" Value="Bold"/>
+    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
   </Style>
 
   <!-- ====================== METRIC VALUE =========================== -->
   <Style x:Key="MetricValue" TargetType="{x:Type TextBlock}">
     <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
     <Setter Property="FontFamily" Value="{StaticResource Font.Display}"/>
-    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="FontSize" Value="18"/>
     <Setter Property="FontWeight" Value="Bold"/>
     <Setter Property="Margin" Value="0,2,0,0"/>
   </Style>

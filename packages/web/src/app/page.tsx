@@ -258,7 +258,7 @@ export default function HomePage() {
   const handleCopyShaTop = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard
-        .writeText("3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1")
+        .writeText("D89226FAA969C77A488C0828BED4F1D78D0EC9F57859E3DD6ACABFA9740857F5")
         .catch(() => {});
       setCopiedShaTop(true);
       setTimeout(() => setCopiedShaTop(false), 2000);
@@ -272,11 +272,11 @@ export default function HomePage() {
 
       {/* Top Floating Navigation Header */}
       <header className="sticky top-0 z-40 border-b border-white/10 bg-[#080808]/95 backdrop-blur-xl w-full">
-        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 min-h-[3.75rem] py-1.5 sm:py-0 flex items-center justify-between gap-2 sm:gap-4 overflow-hidden w-full">
+        <div className="mx-auto max-w-7xl px-2.5 sm:px-6 lg:px-8 min-h-[3.5rem] sm:min-h-[3.75rem] py-1.5 sm:py-0 flex items-center justify-between gap-1.5 sm:gap-4 overflow-hidden w-full">
           {/* Brand & Platform Pill */}
-          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-white text-black font-display font-black text-xs sm:text-sm tracking-wider shadow-md shadow-white/15">
+          <div className="flex items-center gap-1.5 sm:gap-4 shrink-0">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-white text-black font-display font-black text-[11px] sm:text-sm tracking-wider shadow-md shadow-white/15">
                 CS2
               </div>
               <div className="flex flex-col">
@@ -308,10 +308,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Center Navigation Tabs */}
-          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+          {/* Center Navigation Tabs & Quick Action */}
+          <div className="flex items-center gap-1 sm:gap-2 min-w-0 flex-1 justify-end">
             <nav
-              className="relative flex items-center gap-0.5 sm:gap-1 rounded-full border border-white/10 bg-[#121214] p-1 shadow-inner overflow-x-auto scrollbar-none max-w-[calc(100vw-120px)] sm:max-w-none"
+              className="relative flex items-center gap-0.5 sm:gap-1 rounded-full border border-white/10 bg-[#121214] p-0.5 sm:p-1 shadow-inner overflow-x-auto scrollbar-none max-w-[calc(100vw-150px)] sm:max-w-none"
               role="tablist"
               aria-label="Navegação do software"
               aria-orientation="horizontal"
@@ -333,7 +333,7 @@ export default function HomePage() {
                     onClick={() => setActiveTab(tab.id)}
                     onKeyDown={(e) => handleTabKeyDown(e, index)}
                     className={cn(
-                      "relative px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-150 select-none whitespace-nowrap",
+                      "relative px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-150 select-none whitespace-nowrap",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
                       isActive
                         ? "text-black font-black"
@@ -356,7 +356,7 @@ export default function HomePage() {
                         }
                       />
                     )}
-                    <span className="relative z-10 flex items-center gap-1.5 uppercase font-mono text-[11px] tracking-wider">
+                    <span className="relative z-10 flex items-center gap-1 uppercase font-mono text-[10px] sm:text-[11px] tracking-wider">
                       {tab.label}
                     </span>
                   </button>
@@ -365,7 +365,7 @@ export default function HomePage() {
             </nav>
 
             {/* Telemetry Status Pill */}
-            <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-[#121214] px-3 py-1.5 shadow-inner shrink-0">
+            <div className="hidden lg:flex items-center gap-2 rounded-full border border-white/10 bg-[#121214] px-3 py-1.5 shadow-inner shrink-0">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
@@ -379,12 +379,12 @@ export default function HomePage() {
             <button
               type="button"
               onClick={() => handleOpenGuide(0)}
-              className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 px-3 py-1.5 font-mono text-[10px] font-black uppercase tracking-wider text-white transition-all active:scale-95 shadow-sm shrink-0"
+              className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 px-2 sm:px-3 py-1.5 font-mono text-[10px] font-black uppercase tracking-wider text-white transition-all active:scale-95 shadow-sm shrink-0"
               title="Abrir Guia Rápido do Software"
             >
               <Sparkles className="h-3 w-3 text-white" />
               <span className="hidden sm:inline">Guia Rápido</span>
-              <span className="sm:hidden">Guia</span>
+              <span className="sm:hidden text-[9px]">Guia</span>
             </button>
           </div>
         </div>
@@ -902,13 +902,13 @@ export default function HomePage() {
       {/* Minimal Noir Pro Footer */}
       <footer className="mt-16 border-t border-white/10 bg-[#080808]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 font-mono">
-          <div className="flex items-center gap-3">
-            <span className="h-2 w-2 rounded-full bg-white" />
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 text-center sm:text-left">
+            <span className="h-2 w-2 rounded-full bg-white shrink-0" />
             <span className="font-bold text-white tracking-wider">CS2 BOOSTER // SOFTWARE SUITE</span>
-            <span className="text-neutral-600">|</span>
-            <span>MOTOR DE BAIXA LATÊNCIA &amp; SUB-TICK</span>
+            <span className="text-neutral-600 hidden sm:inline">|</span>
+            <span className="text-[11px] sm:text-xs">MOTOR DE BAIXA LATÊNCIA &amp; SUB-TICK</span>
           </div>
-          <div className="flex items-center gap-4 text-neutral-400">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-4 text-neutral-400 text-center sm:text-right">
             <span>100% VAC SAFE · ZERO INJEÇÃO</span>
             <span>•</span>
             <button

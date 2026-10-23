@@ -252,22 +252,22 @@
                                 <StackPanel Margin="0,0,24,0">
                                     <TextBlock Text="AMOSTRAS COLETADAS" Style="{StaticResource MetricLabel}"/>
                                     <TextBlock Text="{Binding SampleCountText}" Style="{StaticResource MetricValue}"
-                                               FontSize="22" Margin="0,4,0,0"/>
+                                               FontSize="18" Margin="0,4,0,0"/>
                                 </StackPanel>
                                 <StackPanel Margin="0,0,24,0">
                                     <TextBlock Text="FPS MÉDIO REGISTRADO" Style="{StaticResource MetricLabel}"/>
                                     <TextBlock Text="{Binding AverageFpsText}" Style="{StaticResource MetricValue}"
-                                               FontSize="22" Margin="0,4,0,0" Foreground="{DynamicResource Brush.PrimaryText}"/>
+                                               FontSize="18" Margin="0,4,0,0" Foreground="{DynamicResource Brush.PrimaryText}"/>
                                 </StackPanel>
                                 <StackPanel Margin="0,0,24,0">
                                     <TextBlock Text="LATÊNCIA MÉDIA" Style="{StaticResource MetricLabel}"/>
                                     <TextBlock Text="{Binding AveragePingText}" Style="{StaticResource MetricValue}"
-                                               FontSize="22" Margin="0,4,0,0"/>
+                                               FontSize="18" Margin="0,4,0,0"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Text="TEMPERATURA MÉDIA" Style="{StaticResource MetricLabel}"/>
                                     <TextBlock Text="{Binding AverageTemperatureText}" Style="{StaticResource MetricValue}"
-                                               FontSize="22" Margin="0,4,0,0"/>
+                                               FontSize="18" Margin="0,4,0,0"/>
                                 </StackPanel>
                             </UniformGrid>
                         </StackPanel>
@@ -285,7 +285,7 @@
                         <StackPanel>
                             <TextBlock Text="PERFIL ATIVO EM MEMÓRIA" Style="{StaticResource EyebrowText}"/>
                             <TextBlock Text="{Binding ActiveProfileName}" Style="{StaticResource CardTitle}"
-                                       Margin="0,6,0,0" FontSize="18"/>
+                                       Margin="0,6,0,0" FontSize="15"/>
                             <TextBlock Text="{Binding ActiveProcessName}" Style="{StaticResource MonoText}"
                                        Margin="0,4,0,0" Foreground="{DynamicResource Brush.PrimaryText}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
@@ -432,7 +432,7 @@
                                 <StackPanel Margin="0,0,24,0">
                                     <TextBlock Text="BACKUPS DISPONÍVEIS" Style="{StaticResource MetricLabel}"/>
                                     <TextBlock Text="{Binding BackupCountText}" Style="{StaticResource MetricValue}"
-                                               FontSize="22" Margin="0,4,0,0"/>
+                                               FontSize="18" Margin="0,4,0,0"/>
                                 </StackPanel>
                                 <StackPanel>
                                     <TextBlock Text="ÚLTIMO REGISTRO GERADO" Style="{StaticResource MetricLabel}"/>
@@ -549,6 +549,75 @@
                             </StackPanel>
                         </Border>
                     </UniformGrid>
+
+                    <!-- Real-Time Hardware Telemetry HUD Strip (Monitor Tab) -->
+                    <Border Style="{StaticResource CardElevated}" Margin="0,18,0,0" Padding="16,14">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,12">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Ellipse Width="6" Height="6" Fill="{DynamicResource Brush.Primary}" Margin="0,0,8,0"/>
+                                    <TextBlock Text="HUD DE TELEMETRIA EM TEMPO REAL" Style="{StaticResource EyebrowText}"/>
+                                    <Border Style="{StaticResource Badge}" Margin="8,0,0,0" Padding="6,1">
+                                        <TextBlock Text="0.5MS KERNEL LOCKED" Style="{StaticResource BadgeText}" FontSize="8"/>
+                                    </Border>
+                                </StackPanel>
+                                <TextBlock Text="RING-3 SAFE · BYPASS TCP ATIVO" HorizontalAlignment="Right"
+                                           FontFamily="{StaticResource Font.Mono}" FontSize="9"
+                                           Foreground="{DynamicResource Brush.Muted}"/>
+                            </Grid>
+
+                            <UniformGrid Columns="6">
+                                <!-- Chip 1 -->
+                                <Border Style="{StaticResource CardBorder}" Padding="8,6" Margin="0,0,6,0">
+                                    <StackPanel>
+                                        <TextBlock Text="KERNEL CLOCK" Style="{StaticResource MetricLabel}" FontSize="8"/>
+                                        <TextBlock Text="0.500 ms" Style="{StaticResource MetricValue}" FontSize="13" Foreground="{DynamicResource Brush.PrimaryText}"/>
+                                        <TextBlock Text="-96.8% latency" FontFamily="{StaticResource Font.Mono}" FontSize="8" Foreground="{DynamicResource Brush.Muted}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Chip 2 -->
+                                <Border Style="{StaticResource CardBorder}" Padding="8,6" Margin="0,0,6,0">
+                                    <StackPanel>
+                                        <TextBlock Text="INTERRUPÇÃO DPC" Style="{StaticResource MetricLabel}" FontSize="8"/>
+                                        <TextBlock Text="4.2 μs" Style="{StaticResource MetricValue}" FontSize="13"/>
+                                        <TextBlock Text="CPU0 bypass" FontFamily="{StaticResource Font.Mono}" FontSize="8" Foreground="{DynamicResource Brush.Muted}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Chip 3 -->
+                                <Border Style="{StaticResource CardBorder}" Padding="8,6" Margin="0,0,6,0">
+                                    <StackPanel>
+                                        <TextBlock Text="TCP SUB-TICK" Style="{StaticResource MetricLabel}" FontSize="8"/>
+                                        <TextBlock Text="0 ms LAG" Style="{StaticResource MetricValue}" FontSize="13" Foreground="{DynamicResource Brush.PrimaryText}"/>
+                                        <TextBlock Text="Nagle off" FontFamily="{StaticResource Font.Mono}" FontSize="8" Foreground="{DynamicResource Brush.Muted}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Chip 4 -->
+                                <Border Style="{StaticResource CardBorder}" Padding="8,6" Margin="0,0,6,0">
+                                    <StackPanel>
+                                        <TextBlock Text="P-CORE LOCK" Style="{StaticResource MetricLabel}" FontSize="8"/>
+                                        <TextBlock Text="CORES 2-7" Style="{StaticResource MetricValue}" FontSize="13"/>
+                                        <TextBlock Text="E-Cores off" FontFamily="{StaticResource Font.Mono}" FontSize="8" Foreground="{DynamicResource Brush.Muted}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Chip 5 -->
+                                <Border Style="{StaticResource CardBorder}" Padding="8,6" Margin="0,0,6,0">
+                                    <StackPanel>
+                                        <TextBlock Text="STANDBY RAM" Style="{StaticResource MetricLabel}" FontSize="8"/>
+                                        <TextBlock Text="TRIM ATIVO" Style="{StaticResource MetricValue}" FontSize="13"/>
+                                        <TextBlock Text="Dynamic purge" FontFamily="{StaticResource Font.Mono}" FontSize="8" Foreground="{DynamicResource Brush.Muted}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Chip 6 -->
+                                <Border Style="{StaticResource CardBorder}" Padding="8,6">
+                                    <StackPanel>
+                                        <TextBlock Text="GPU MMCSS" Style="{StaticResource MetricLabel}" FontSize="8"/>
+                                        <TextBlock Text="PRIORITY 8" Style="{StaticResource MetricValue}" FontSize="13" Foreground="{DynamicResource Brush.PrimaryText}"/>
+                                        <TextBlock Text="Realtime Games" FontFamily="{StaticResource Font.Mono}" FontSize="8" Foreground="{DynamicResource Brush.Muted}"/>
+                                    </StackPanel>
+                                </Border>
+                            </UniformGrid>
+                        </StackPanel>
+                    </Border>
 
                     <StackPanel Orientation="Horizontal" Margin="0,22,0,0">
                         <Button Content="Ativar Coleta em Background" Click="OnStartMonitoring"/>

@@ -906,7 +906,7 @@ var OptimizerSection = ({
   const displayDpc = isOptimized ? timerResolution ? "0.5 ms" : current.dpc : "11.4 ms";
   const copyHash = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText("3A71A3A8A90835622B92942D12241A908C4EC18E30DA4B9E8A4C19A1C5F1F4E1").catch(() => {
+      navigator.clipboard.writeText("D89226FAA969C77A488C0828BED4F1D78D0EC9F57859E3DD6ACABFA9740857F5").catch(() => {
       });
       setCopiedSha(true);
       setTimeout(() => setCopiedSha(false), 2e3);
