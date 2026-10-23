@@ -10,12 +10,12 @@ import { Star } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 
 const ORDERS = [
-  "Gabriel M. contratou Duo Boost 14.500 → 18.000 Premier",
-  "Matheus R. contratou Solo Boost 5.000 → 10.000 Premier",
-  "Ana L. contratou Coaching FPL (2 sessões)",
-  "Lucas P. contratou Duo Boost 18.000 → 22.000 Premier",
-  "Rafael S. contratou Otimizador de FPS + Tweaks",
-  "Julia F. contratou Solo Boost 10.000 → 15.000 Premier",
+  "Gabriel M. otimizou Windows 11 com Cs2Booster.exe (+58 FPS no 1% Low)",
+  "Matheus R. ativou Timer Resolution 0.500ms (DPC Latency reduzido para 0.42ms)",
+  "Lucas P. aplicou Perfil Competitivo Pro em Mirage (Ping 14ms constante)",
+  "Rafael S. desativou delay TCP de 40ms com Sub-Tick Buffer Bypass",
+  "Felipe A. restaurou snapshot original de registro com 1 clique (100% íntegro)",
+  "Vinicius K. auditou Cs2Booster.exe em Ring-3 User Mode (0 DLLs injetadas · VAC Safe)",
 ];
 
 export function Ticker() {
@@ -52,7 +52,7 @@ export function Ticker() {
       <div className="mx-auto flex max-w-container items-center gap-4 px-6 py-2">
         <span className="hidden items-center gap-2 whitespace-nowrap text-xs font-bold uppercase tracking-wider text-text sm:flex">
           <span className="ticker-dot" />
-          Pedidos ao vivo
+          Telemetria ao vivo
         </span>
 
         <div className="relative min-w-0 flex-1 overflow-hidden">

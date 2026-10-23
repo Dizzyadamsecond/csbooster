@@ -3,55 +3,57 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <!-- Primitive colors -->
-  <Color x:Key="Color.Red50">#FEF2F2</Color>
-  <Color x:Key="Color.Red100">#FEE2E2</Color>
-  <Color x:Key="Color.Red200">#FECACA</Color>
-  <Color x:Key="Color.Red300">#FCA5A5</Color>
-  <Color x:Key="Color.Red400">#F87171</Color>
-  <Color x:Key="Color.Red500">#EF4444</Color>
-  <Color x:Key="Color.Red600">#DC2626</Color>
-  <Color x:Key="Color.Red700">#B91C1C</Color>
-  <Color x:Key="Color.Red800">#991B1B</Color>
-  <Color x:Key="Color.Red900">#7F1D1D</Color>
-  <Color x:Key="Color.Red950">#450A0A</Color>
+  <Color x:Key="Color.Red50">#FFF1F0</Color>
+  <Color x:Key="Color.Red100">#FFE0DF</Color>
+  <Color x:Key="Color.Red200">#FFC5C2</Color>
+  <Color x:Key="Color.Red300">#FF9D99</Color>
+  <Color x:Key="Color.Red400">#FF6F68</Color>
+  <Color x:Key="Color.Red500">#FF3B30</Color>
+  <Color x:Key="Color.Red600">#E02319</Color>
+  <Color x:Key="Color.Red700">#C21A12</Color>
+  <Color x:Key="Color.Red800">#A1150E</Color>
+  <Color x:Key="Color.Red900">#7C100B</Color>
+  <Color x:Key="Color.Red950">#430705</Color>
   <Color x:Key="Color.Mono0">#FFFFFF</Color>
-  <Color x:Key="Color.Mono50">#FBF7F7</Color>
-  <Color x:Key="Color.Mono100">#F7EFEF</Color>
-  <Color x:Key="Color.Mono200">#F0E3E3</Color>
-  <Color x:Key="Color.Mono300">#E4CECE</Color>
-  <Color x:Key="Color.Mono400">#CFADAD</Color>
-  <Color x:Key="Color.Mono500">#B08787</Color>
-  <Color x:Key="Color.Mono600">#8E6464</Color>
-  <Color x:Key="Color.Mono700">#6B4747</Color>
-  <Color x:Key="Color.Mono800">#452C2C</Color>
-  <Color x:Key="Color.Mono900">#2B1B1B</Color>
-  <Color x:Key="Color.Mono950">#160E0E</Color>
+  <Color x:Key="Color.Mono50">#FAFAFA</Color>
+  <Color x:Key="Color.Mono100">#F4F4F5</Color>
+  <Color x:Key="Color.Mono200">#E4E4E7</Color>
+  <Color x:Key="Color.Mono300">#D4D4D8</Color>
+  <Color x:Key="Color.Mono400">#A1A1AA</Color>
+  <Color x:Key="Color.Mono500">#71717A</Color>
+  <Color x:Key="Color.Mono600">#52525B</Color>
+  <Color x:Key="Color.Mono700">#3F3F46</Color>
+  <Color x:Key="Color.Mono800">#27272A</Color>
+  <Color x:Key="Color.Mono900">#141416</Color>
+  <Color x:Key="Color.Mono950">#080808</Color>
 
   <!-- Semantic colors (light) -->
   <Color x:Key="Color.Bg">#FFFFFF</Color>
-  <Color x:Key="Color.Surface">#FBF7F7</Color>
-  <Color x:Key="Color.Surface2">#F7EFEF</Color>
-  <Color x:Key="Color.Surface3">#F0E3E3</Color>
-  <Color x:Key="Color.Surface4">#E4CECE</Color>
-  <Color x:Key="Color.Line">#F0E3E3</Color>
-  <Color x:Key="Color.LineStrong">#E4CECE</Color>
-  <Color x:Key="Color.Text">#160E0E</Color>
-  <Color x:Key="Color.TextSecondary">#6B4747</Color>
-  <Color x:Key="Color.TextTertiary">#8E6464</Color>
-  <Color x:Key="Color.Muted">#8E6464</Color>
-  <Color x:Key="Color.Faint">#B08787</Color>
-  <Color x:Key="Color.Primary">#DC2626</Color>
-  <Color x:Key="Color.PrimaryHover">#B91C1C</Color>
-  <Color x:Key="Color.PrimaryActive">#991B1B</Color>
-  <Color x:Key="Color.PrimaryText">#DC2626</Color>
-  <Color x:Key="Color.PrimarySoft">#FEF2F2</Color>
-  <Color x:Key="Color.PrimarySoftText">#B91C1C</Color>
+  <Color x:Key="Color.Surface">#FAFAFA</Color>
+  <Color x:Key="Color.Surface2">#F4F4F5</Color>
+  <Color x:Key="Color.Surface3">#E4E4E7</Color>
+  <Color x:Key="Color.Surface4">#D4D4D8</Color>
+  <Color x:Key="Color.Line">#E4E4E7</Color>
+  <Color x:Key="Color.LineStrong">#D4D4D8</Color>
+  <Color x:Key="Color.Text">#080808</Color>
+  <Color x:Key="Color.TextSecondary">#3F3F46</Color>
+  <Color x:Key="Color.TextTertiary">#52525B</Color>
+  <Color x:Key="Color.Muted">#52525B</Color>
+  <Color x:Key="Color.Faint">#A1A1AA</Color>
+  <Color x:Key="Color.Primary">#080808</Color>
+  <Color x:Key="Color.PrimaryHover">#27272A</Color>
+  <Color x:Key="Color.PrimaryActive">#3F3F46</Color>
+  <Color x:Key="Color.PrimaryText">#080808</Color>
+  <Color x:Key="Color.PrimarySoft">#F4F4F5</Color>
+  <Color x:Key="Color.PrimarySoftText">#080808</Color>
   <Color x:Key="Color.PrimaryForeground">#FFFFFF</Color>
-  <Color x:Key="Color.FocusRing">#EF4444</Color>
-  <Color x:Key="Color.Success">#B91C1C</Color>
-  <Color x:Key="Color.Warning">#EF4444</Color>
-  <Color x:Key="Color.Error">#DC2626</Color>
-  <Color x:Key="Color.Info">#DC2626</Color>
+  <Color x:Key="Color.FocusRing">#080808</Color>
+  <Color x:Key="Color.Danger">#080808</Color>
+  <Color x:Key="Color.DangerForeground">#FFFFFF</Color>
+  <Color x:Key="Color.Success">#080808</Color>
+  <Color x:Key="Color.Warning">#3F3F46</Color>
+  <Color x:Key="Color.Error">#080808</Color>
+  <Color x:Key="Color.Info">#080808</Color>
 
   <!-- Semantic brushes (light) -->
   <SolidColorBrush x:Key="Brush.Bg" Color="{StaticResource Color.Bg}" />
@@ -74,9 +76,23 @@
   <SolidColorBrush x:Key="Brush.PrimarySoftText" Color="{StaticResource Color.PrimarySoftText}" />
   <SolidColorBrush x:Key="Brush.PrimaryForeground" Color="{StaticResource Color.PrimaryForeground}" />
   <SolidColorBrush x:Key="Brush.FocusRing" Color="{StaticResource Color.FocusRing}" />
+  <SolidColorBrush x:Key="Brush.Danger" Color="{StaticResource Color.Danger}" />
+  <SolidColorBrush x:Key="Brush.DangerForeground" Color="{StaticResource Color.DangerForeground}" />
   <SolidColorBrush x:Key="Brush.Success" Color="{StaticResource Color.Success}" />
   <SolidColorBrush x:Key="Brush.Warning" Color="{StaticResource Color.Warning}" />
   <SolidColorBrush x:Key="Brush.Error" Color="{StaticResource Color.Error}" />
   <SolidColorBrush x:Key="Brush.Info" Color="{StaticResource Color.Info}" />
+
+  <!-- Translucent overlays (light) -->
+  <!-- Alphas mirror the web Tailwind modifiers (/10 surfaces, /25-/30 edges). -->
+  <SolidColorBrush x:Key="Brush.PrimaryOverlay" Color="{StaticResource Color.Primary}" Opacity="0.1" />
+  <SolidColorBrush x:Key="Brush.PrimaryEdge" Color="{StaticResource Color.Primary}" Opacity="0.25" />
+  <SolidColorBrush x:Key="Brush.SuccessOverlay" Color="{StaticResource Color.Success}" Opacity="0.1" />
+  <SolidColorBrush x:Key="Brush.SuccessEdge" Color="{StaticResource Color.Success}" Opacity="0.3" />
+  <SolidColorBrush x:Key="Brush.DangerOverlay" Color="{StaticResource Color.Danger}" Opacity="0.1" />
+  <SolidColorBrush x:Key="Brush.DangerEdge" Color="{StaticResource Color.Danger}" Opacity="0.3" />
+  <SolidColorBrush x:Key="Brush.WarningOverlay" Color="{StaticResource Color.Warning}" Opacity="0.1" />
+  <SolidColorBrush x:Key="Brush.WarningEdge" Color="{StaticResource Color.Warning}" Opacity="0.3" />
+  <SolidColorBrush x:Key="Brush.DangerHover" Color="{StaticResource Color.Danger}" Opacity="0.9" />
 
 </ResourceDictionary>

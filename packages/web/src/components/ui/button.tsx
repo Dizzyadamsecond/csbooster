@@ -56,6 +56,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       children,
       whileTap,
+      whileHover,
       transition,
       ...props
     },
@@ -66,10 +67,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <motion.button
         ref={ref}
+        whileHover={
+          disabled || shouldReduceMotion
+            ? undefined
+            : (whileHover ?? { scale: 1.015 })
+        }
         whileTap={
           disabled || shouldReduceMotion
             ? undefined
-            : (whileTap ?? { scale: 0.96 })
+            : (whileTap ?? { scale: 0.97 })
         }
         transition={transition ?? { duration: 0.15, ease: "easeOut" }}
         className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}

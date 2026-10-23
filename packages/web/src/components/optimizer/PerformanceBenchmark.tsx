@@ -132,13 +132,13 @@ export const PerformanceBenchmark: React.FC<PerformanceBenchmarkProps> = ({
             <div>
               <div className="flex justify-between text-[11px] font-mono text-muted">
                 <span>Buffer TCP</span>
-                <span>{isOptimized ? "18ms (Otimizado)" : "42ms (Atrasado)"}</span>
+                <span>{isOptimized ? `${profile.targetLatency}ms (Otimizado)` : `${profile.baseLatency}ms (Atrasado)`}</span>
               </div>
               <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-surface-3">
                 <div
                   className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
                   style={{
-                    width: isOptimized ? "43%" : "100%",
+                    width: isOptimized ? `${Math.round((profile.targetLatency / profile.baseLatency) * 100)}%` : "100%",
                   }}
                 />
               </div>
@@ -251,13 +251,13 @@ export const PerformanceBenchmark: React.FC<PerformanceBenchmarkProps> = ({
             <div>
               <div className="flex justify-between text-[11px] font-mono text-muted">
                 <span>Latência de Interrupção DPC</span>
-                <span>{isOptimized ? "4.2ms (Ultra responsivo)" : "11.4ms (Buffer padrão)"}</span>
+                <span>{isOptimized ? `${profile.targetInputLag}ms (Ultra responsivo)` : `${profile.baseInputLag}ms (Buffer padrão)`}</span>
               </div>
               <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-surface-3">
                 <div
                   className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
                   style={{
-                    width: isOptimized ? "37%" : "100%",
+                    width: isOptimized ? `${Math.round((profile.targetInputLag / profile.baseInputLag) * 100)}%` : "100%",
                   }}
                 />
               </div>

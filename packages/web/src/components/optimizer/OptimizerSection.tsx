@@ -71,7 +71,7 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
   const copyHash = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard
-        .writeText("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
+        .writeText("9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24")
         .catch(() => {});
       setCopiedSha(true);
       setTimeout(() => setCopiedSha(false), 2000);
@@ -204,10 +204,10 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   type="button"
                   onClick={() => setTimerResolution((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-[background-color,border-color,color] duration-150 ease-out text-left",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
                     timerResolution
-                      ? "border-primary/40 bg-primary-soft/40 text-text"
-                      : "border-line bg-surface text-muted hover:border-line-strong"
+                      ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
+                      : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
                   )}
                 >
                   <div>
@@ -216,9 +216,9 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   </div>
                   <span
                     className={cn(
-                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase",
+                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase transition-colors duration-150",
                       timerResolution
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
                         : "bg-surface-3 text-muted"
                     )}
                   >
@@ -231,10 +231,10 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   type="button"
                   onClick={() => setPcoreAffinity((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-[background-color,border-color,color] duration-150 ease-out text-left",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
                     pcoreAffinity
-                      ? "border-primary/40 bg-primary-soft/40 text-text"
-                      : "border-line bg-surface text-muted hover:border-line-strong"
+                      ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
+                      : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
                   )}
                 >
                   <div>
@@ -243,9 +243,9 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   </div>
                   <span
                     className={cn(
-                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase",
+                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase transition-colors duration-150",
                       pcoreAffinity
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
                         : "bg-surface-3 text-muted"
                     )}
                   >
@@ -258,10 +258,10 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   type="button"
                   onClick={() => setWorkingSetFlush((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-[background-color,border-color,color] duration-150 ease-out text-left",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
                     workingSetFlush
-                      ? "border-primary/40 bg-primary-soft/40 text-text"
-                      : "border-line bg-surface text-muted hover:border-line-strong"
+                      ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
+                      : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
                   )}
                 >
                   <div>
@@ -270,9 +270,9 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   </div>
                   <span
                     className={cn(
-                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase",
+                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase transition-colors duration-150",
                       workingSetFlush
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
                         : "bg-surface-3 text-muted"
                     )}
                   >
@@ -285,21 +285,21 @@ export const OptimizerSection: React.FC<OptimizerSectionProps> = ({
                   type="button"
                   onClick={() => setMmcssPriority((p) => !p)}
                   className={cn(
-                    "flex items-center justify-between rounded-lg border p-2.5 transition-[background-color,border-color,color] duration-150 ease-out text-left",
+                    "flex items-center justify-between rounded-lg border p-2.5 transition-all duration-150 ease-out text-left active:scale-[0.98]",
                     mmcssPriority
-                      ? "border-primary/40 bg-primary-soft/40 text-text"
-                      : "border-line bg-surface text-muted hover:border-line-strong"
+                      ? "border-primary/40 bg-primary-soft/40 text-text hover:border-primary/60"
+                      : "border-line bg-surface text-muted hover:border-line-strong hover:text-text"
                   )}
                 >
                   <div>
-                    <span className="block font-bold">MMCSS Tasks\Games</span>
+                    <span className="block font-bold">MMCSS Tasks\\Games</span>
                     <span className="text-[10px] text-muted block">GPU Priority = 8</span>
                   </div>
                   <span
                     className={cn(
-                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase",
+                      "rounded px-1.5 py-0.5 text-[10px] font-bold uppercase transition-colors duration-150",
                       mmcssPriority
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
                         : "bg-surface-3 text-muted"
                     )}
                   >

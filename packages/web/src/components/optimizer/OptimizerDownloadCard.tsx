@@ -20,7 +20,7 @@ export interface OptimizerDownloadCardProps {
   className?: string;
 }
 
-const SHA256_HASH = "FD095EF63C6B34F2F2D09C4847D022805CAD44278FC1A3E6229D93314FABB115";
+const SHA256_HASH = "9DA6A8D2ABB23B432E6598F37570FE72AA44E83662DEBDBE1C2B5903945E1E24";
 
 export const OptimizerDownloadCard: React.FC<OptimizerDownloadCardProps> = ({
   className,

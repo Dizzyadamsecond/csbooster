@@ -30,11 +30,12 @@ const result = await postcss(cfg.plugins).process(input, {
 
 const expected = [
   ".bg-primary",
+  ".bg-primary-soft",
+  ".text-primary-text",
   ".text-muted",
   ".flex",
   ".border-line",
   ".font-display",
-  ".bg-red-600\\/10",
   // hover variants are generated only when used in source (button.tsx uses hover:bg-surface-2)
   ".hover\\:bg-surface-2",
 ];
@@ -43,4 +44,26 @@ if (missing.length) {
   console.error("❌ Tailwind smoke test FAILED. Missing:", missing.join(", "));
   process.exit(1);
 }
-console.log(`✅ Tailwind smoke test OK — ${result.css.length} bytes of utilities generated.`);
+
+// Token-pure contract: raw palette utilities must NOT be generated, because no
+// source file is allowed to reference them (semantic tokens only).
+const forbidden = [
+  ".bg-red-",
+  ".text-red-",
+  ".border-red-",
+  ".bg-blue-",
+  ".text-blue-",
+  ".border-blue-",
+];
+const leaked = forbidden.filter((cls) => result.css.includes(cls));
+if (leaked.length) {
+  console.error(
+    "❌ Tailwind smoke test FAILED. Raw palette utilities generated (source is not token-pure):",
+    leaked.join(", ")
+  );
+  process.exit(1);
+}
+
+console.log(
+  `✅ Tailwind smoke test OK — ${result.css.length} bytes of utilities generated, 0 raw palette utilities.`
+);

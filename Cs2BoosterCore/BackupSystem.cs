@@ -90,7 +90,9 @@ public class BackupSystem
         // Restore config files
         foreach (var file in Directory.GetFiles(backupPath))
         {
-            if (file.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+            // backup_info.json é metadado do backup: não faz parte das configs do app.
+            if (file.EndsWith(".json", StringComparison.OrdinalIgnoreCase)
+                && !Path.GetFileName(file).Equals("backup_info.json", StringComparison.OrdinalIgnoreCase))
             {
                 var relativeName = Path.GetFileName(file);
                 var dest = Path.Combine(AppContext.BaseDirectory, "config", relativeName);

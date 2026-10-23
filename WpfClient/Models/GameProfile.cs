@@ -10,6 +10,9 @@ public class GameProfile
     public string ProcessName { get; set; } = "";
     public string ExecutablePath { get; set; } = "";
     public bool IsRunning { get; set; } = false;
+
+    /// <summary>Estado do jogo em linguagem de UI ("EM EXECUÇÃO" / "PARADO").</summary>
+    public string StatusText => IsRunning ? "EM EXECUÇÃO" : "PARADO";
     public Dictionary<string, object> RegistrySettings { get; set; } = new();
     public Models.GpuSettings? Gpu { get; set; }
     public Models.MemorySettings? Memory { get; set; }

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "cs2ui.h"
+#include "ui_design_tokens.generated.h"
 #include "performance_manager.h"
 #include <windowsx.h>
 #include <commctrl.h>

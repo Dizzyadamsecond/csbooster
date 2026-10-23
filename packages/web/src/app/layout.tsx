@@ -2,9 +2,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CS2 BOOSTER // Noir Pro Arena — Elo Boost & Hardware Optimization",
+  title: "CS2 BOOSTER // Native Windows Engine — Otimização Sub-Tick & Input Lag",
   description:
-    "Plataforma definitiva para CS2: boosting rankeado, coaching profissional e otimização de FPS com tweaks do sistema Windows.",
+    "Software executável nativo Win32/C# .NET 8 AOT para Counter-Strike 2: timer 0.500ms, bypass TCP sub-tick, isolamento P-Core e 100% VAC Safe.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -21,7 +21,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>

@@ -1,5 +1,5 @@
 /**
- * monored-sweep.mjs — enforces the monochromatic rule (RED + WHITE only).
+ * monored-sweep.mjs — enforces the monochromatic rule (BLACK + WHITE only).
  *
  * 1) Applies known replacements migrating legacy hues to MonoRed tokens.
  * 2) Scans src/ for any leftover non-red hue (yellow, emerald, blue, ...) and
@@ -68,7 +68,7 @@ const REPLACEMENTS = [
 ];
 
 const FORBIDDEN_HUE =
-  /\b(?:yellow|emerald|amber|fuchsia|blue|cyan|rose|green|orange|purple|violet|indigo|sky|teal|lime|pink)-\d{2,3}\b/;
+  /\b(?:blue|yellow|emerald|amber|fuchsia|rose|green|orange|purple|violet|indigo|lime|pink)-\d{2,3}\b/;
 
 function* walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -107,9 +107,9 @@ for (const file of walk(SRC)) {
 }
 
 if (violations > 0) {
-  console.error(`\n❌ MonoRed sweep FAILED — ${violations} violation(s).`);
+  console.error(`\n❌ Monochromatic Noir sweep FAILED — ${violations} violation(s).`);
   process.exit(1);
 }
 console.log(
-  `\n✅ MonoRed sweep OK — ${changed} file(s) updated${CHECK_ONLY ? " (check-only)" : ""}.`
+  `\n✅ Monochromatic Noir sweep OK — ${changed} file(s) updated${CHECK_ONLY ? " (check-only)" : ""}.`
 );

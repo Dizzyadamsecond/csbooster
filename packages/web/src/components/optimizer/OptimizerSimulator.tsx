@@ -305,9 +305,12 @@ export const OptimizerSimulator: React.FC<OptimizerSimulatorProps> = ({
     const text = logs
       .map((l) => `[${l.timestamp}] ${l.prefix} ${l.message}`)
       .join("\n");
-    navigator.clipboard.writeText(text);
-    setCopiedLogs(true);
-    setTimeout(() => setCopiedLogs(false), 2000);
+    if (typeof navigator !== "undefined" && navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).catch(() => {});
+      setCopiedLogs(true);
+      const timer = setTimeout(() => setCopiedLogs(false), 2000);
+      timerRefs.current.push(timer);
+    }
   };
 
   const handleClearLogs = () => {
@@ -425,7 +428,7 @@ export const OptimizerSimulator: React.FC<OptimizerSimulatorProps> = ({
                 APLICANDO TWEAKS...
               </Badge>
             )}
-            {status === "optimized" && (
+            {(status === "optimized" || (status === "idle" && isOptimized)) && (
               <Badge tone="success" size="sm">
                 SISTEMA OTIMIZADO
               </Badge>

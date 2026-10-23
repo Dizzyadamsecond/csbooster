@@ -8,10 +8,10 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const variantClasses: Record<CardVariant, string> = {
-  default: "bg-surface border border-line hover:border-line-strong",
-  elevated: "bg-surface-2 border border-line-strong shadow-md",
-  glass: "bg-surface/80 backdrop-blur-xl border border-line-strong shadow-lg",
-  outline: "bg-transparent border border-line-strong",
+  default: "bg-surface border border-line hover:border-line-strong transition-all duration-200",
+  elevated: "bg-surface-2 border border-line-strong shadow-md hover:border-white/20 transition-all duration-200",
+  glass: "bg-surface/80 backdrop-blur-xl border border-line-strong shadow-lg hover:border-white/20 transition-all duration-200",
+  outline: "bg-transparent border border-line-strong hover:border-white/20 transition-all duration-200",
 };
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
