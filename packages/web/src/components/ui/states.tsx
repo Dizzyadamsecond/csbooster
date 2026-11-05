@@ -75,9 +75,9 @@ export interface LoadingStateProps {
 
 export function LoadingState({ message, className, skeleton }: LoadingStateProps) {
   return (
-    <div className={cn("flex flex-col items-center justify-center py-12 px-6", className)}>
+    <div className={cn("flex flex-col items-center justify-center py-12 px-6", className)} role="status" aria-live="polite" aria-busy="true">
       {skeleton || (
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
+        <div className="motion-safe:animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" aria-hidden="true" />
       )}
       {message && <p className="mt-4 text-sm text-muted">{message}</p>}
     </div>

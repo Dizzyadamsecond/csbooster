@@ -22,18 +22,18 @@ struct ColorTokens {
     COLORREF text_primary = RGB(8, 8, 8);
     COLORREF text_secondary = RGB(63, 63, 70);
     COLORREF text_muted = RGB(82, 82, 91);
-    COLORREF text_accent = RGB(8, 8, 8);
+    COLORREF text_accent = RGB(0, 102, 170);
 
   // Borders
     COLORREF border_default = RGB(228, 228, 231);
-    COLORREF border_focus = RGB(8, 8, 8);
+    COLORREF border_focus = RGB(0, 153, 255);
     COLORREF border_disabled = RGB(228, 228, 231);
 
   // Actions
-    COLORREF action_primary = RGB(8, 8, 8);
-    COLORREF action_primary_hover = RGB(39, 39, 42);
-    COLORREF action_primary_pressed = RGB(63, 63, 70);
-    COLORREF action_primary_foreground = RGB(255, 255, 255);
+    COLORREF action_primary = RGB(0, 153, 255);
+    COLORREF action_primary_hover = RGB(0, 122, 204);
+    COLORREF action_primary_pressed = RGB(0, 102, 170);
+    COLORREF action_primary_foreground = RGB(8, 8, 8);
     COLORREF action_secondary = RGB(244, 244, 245);
     COLORREF action_danger = RGB(8, 8, 8);
     COLORREF action_danger_foreground = RGB(255, 255, 255);

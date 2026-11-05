@@ -26,6 +26,9 @@
   <Color x:Key="Color.Mono800">#27272A</Color>
   <Color x:Key="Color.Mono900">#141416</Color>
   <Color x:Key="Color.Mono950">#080808</Color>
+  <Color x:Key="Color.Giga500">#0099FF</Color>
+  <Color x:Key="Color.Giga600">#007ACC</Color>
+  <Color x:Key="Color.Giga700">#0066AA</Color>
 
   <!-- Semantic colors (dark) -->
   <Color x:Key="Color.Bg">#080808</Color>

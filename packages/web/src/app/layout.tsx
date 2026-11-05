@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CS2 BOOSTER // Native Windows Engine — Otimização Sub-Tick & Input Lag",
+  title: "CS2 Booster — Verified FPS Performance for Counter-Strike 2",
   description:
     "Software executável nativo Win32/C# .NET 8 AOT para Counter-Strike 2: timer 0.500ms, bypass TCP sub-tick, isolamento P-Core e 100% VAC Safe.",
   icons: {

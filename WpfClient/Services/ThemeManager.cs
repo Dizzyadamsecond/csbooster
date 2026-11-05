@@ -23,7 +23,7 @@ public static class ThemeManager
     /// <summary>Loads the persisted preference (dark first) and applies it.</summary>
     public static void Initialize()
     {
-        var dark = true; // Dark default for pro gamer / CS2 aesthetic
+        var dark = false; // Light editorial default matching the Giga reference surface
         try
         {
             var saved = Environment.GetEnvironmentVariable(PersistKey);

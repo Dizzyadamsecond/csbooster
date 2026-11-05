@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Cs2BoosterDesktop.Services;
 using Cs2BoosterDesktop.ViewModels;
@@ -68,10 +69,36 @@ public partial class MainWindow : Window
             return;
         }
 
-        DashboardPanel.Visibility = tag == "dashboard" ? Visibility.Visible : Visibility.Collapsed;
-        OptimizePanel.Visibility = tag == "optimize" ? Visibility.Visible : Visibility.Collapsed;
-        ProfilesPanel.Visibility = tag == "profiles" ? Visibility.Visible : Visibility.Collapsed;
-        MonitorPanel.Visibility = tag == "monitor" ? Visibility.Visible : Visibility.Collapsed;
+        var target = tag switch
+        {
+            "optimize" => OptimizePanel,
+            "profiles" => ProfilesPanel,
+            "monitor" => MonitorPanel,
+            _ => DashboardPanel
+        };
+
+        foreach (var panel in new[] { DashboardPanel, OptimizePanel, ProfilesPanel, MonitorPanel })
+        {
+            if (ReferenceEquals(panel, target)) continue;
+            panel.BeginAnimation(OpacityProperty, null);
+            panel.Visibility = Visibility.Collapsed;
+            panel.Opacity = 1;
+        }
+
+        target.Visibility = Visibility.Visible;
+        target.Opacity = 0;
+        target.RenderTransform = new TranslateTransform(0, 8);
+
+        var fade = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(220)))
+        {
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+        };
+        var slide = new DoubleAnimation(8, 0, new Duration(TimeSpan.FromMilliseconds(260)))
+        {
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+        };
+        target.BeginAnimation(OpacityProperty, fade);
+        ((TranslateTransform)target.RenderTransform).BeginAnimation(TranslateTransform.YProperty, slide);
     }
 
     private async void OnCollectSample(object sender, RoutedEventArgs e)

@@ -19,7 +19,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        "rounded-xl transition-colors duration-200",
+        "rounded-lg transition-colors duration-200",
         variantClasses[variant],
         className
       )}
